@@ -1,0 +1,156 @@
+
+body {
+    margin: 0;
+}
+.defi-container {
+    margin-top: 60px;
+    overflow-x: hidden;
+    .back-button {
+        position: absolute;
+        top: calc(60px + 30px );
+        left: 15px;
+    }
+    .defi-header {
+        padding-top: 10vh;
+        padding-bottom: 10vh;
+        @media (min-width: 576px) {
+            padding-top: 20vh;
+            padding-bottom: 20vh;
+        } 
+        @media (min-width: 768px) {
+            padding-top: 20vh;
+            padding-bottom: 20vh;
+        }
+        @media (min-width: 992px) {
+            padding-top: 20vh;
+            padding-bottom: 20vh;
+        }
+        @media (min-width: 1200px) {
+            padding-top: 25vh;
+            padding-bottom: 25vh;
+        }
+        .defi__title {
+            font-family: "Lato";
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            width: 70%;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            padding-left: 15px;
+            padding-right: 15px;
+            @media (min-width: 576px) {
+                width: 50%;
+                font-size: 32px;
+            } 
+            @media (min-width: 768px) {
+                width: 50%;
+                font-size: 32px;
+            }
+            @media (min-width: 992px) {
+                width: 50%;
+                font-size: 32px;
+            }
+            @media (min-width: 1200px) {
+                width: 50%;
+                font-size: 40px;
+            }
+        }
+        .defi__subtitle {
+            font-family: "Lato";
+            font-size: 16px;
+            font-weight: 500;
+            color: white;
+            text-align: center;
+            text-transform: uppercase;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            @media (min-width: 576px) {
+                font-size: 18px;
+            }
+            @media (min-width: 768px) {
+                font-size: 20px;
+            }
+            @media (min-width: 992px) {
+                font-size: 20px;
+            }
+            @media (min-width: 1200px) {
+                font-size: 24px;
+            }
+            
+        }
+    }
+    
+}
+.defi-mardown {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 50px;
+    @media (min-width: 576px) {
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+    @media (min-width: 768px) {
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+    @media (min-width: 992px) {
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+    @media (min-width: 1200px) {
+        padding-left: 20%;
+        padding-right: 20%;
+    }
+
+    p {
+        font-family: "Lato";
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 150%;
+        color: #9F9F9F;
+        @media (min-width: 576px) {
+            font-size: 18px;
+        }
+        @media (min-width: 768px) {
+            font-size: 20px;
+        }
+        @media (min-width: 992px) {
+            font-size: 20px;
+        }
+        img {
+            width: auto;
+            height: 200px;
+            // margin-top: 30px;
+            margin-bottom: 30px;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            @media (min-width: 768px) {
+                height: 200px;
+            }
+            @media (min-width: 992px) {
+                height: 400px;
+            }
+        }
+    }
+    h2 {
+        font-family: "Lato";
+        font-size: 24px;
+        font-weight: 700;
+        color: #F9572D;
+        @media (min-width: 576px) {
+            font-size: 24px;
+            text-align: center;
+        }
+        @media (min-width: 768px) {
+            font-size: 28px;
+            text-align: center;
+        }
+        @media (min-width: 992px) {
+            font-size: 32px;
+            text-align: center;
+        }
+
+    }
+}

@@ -1,0 +1,31 @@
+.answer-container {
+    position: relative;
+    height: 50px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    background: #FFF;
+    text-align: center;
+
+    font-family: "Lato";
+    font-weight: 600;
+    font-size: 16px;
+
+    margin-bottom: 15px;
+
+    transition-duration: .3s;
+    @media (min-width: 768px) {
+        margin-bottom: 20px;
+    }
+    .answer-container__text {
+        position: absolute;
+        top:50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+    }
+    
+}
+.answer-container.active {
+    background: orange;
+    color: white;
+}

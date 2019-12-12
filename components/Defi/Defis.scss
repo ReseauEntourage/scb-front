@@ -1,0 +1,97 @@
+.defis-container {
+
+    .defis-container__defis-list{
+        margin-top: 60px;
+        padding-left: 15px;
+        padding-right: 15px;
+        @media (min-width: 576px) {
+            padding-left: 10%;
+            padding-right: 10%;
+        }
+        @media (min-width: 768px) {
+            padding-left: 15%;
+            padding-right: 15%;
+        }
+        @media (min-width: 992px) {
+            padding-left: 15%;
+            padding-right: 15%;
+        }
+        @media (min-width: 1200px) {
+            padding-left: 20%;
+            padding-right: 20%;
+        }
+        .defis-container-title_1 {
+            font-family: "Lato";
+            font-size: 28px;
+            font-weight: 700;
+            color: black;
+            text-align: center;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 30px; 
+            @media (min-width: 576px) {
+                font-size: 28px;
+            }
+            @media (min-width: 768px) {
+                font-size: 28px;
+            }
+            @media (min-width: 992px) {
+                font-size: 32px;
+            }
+            @media (min-width: 1200px) {
+                font-size: 32px;
+            }
+        }
+        .defis-container-title_h2 {
+            font-family: "Lato";
+            font-size: 24px;
+            font-weight: 700;
+            color: #F9572D;
+            text-align: left;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 30px; 
+            @media (min-width: 576px) {
+                font-size: 24px;
+                padding-left: 0;
+            }
+            @media (min-width: 768px) {
+                font-size: 24px;
+                padding-left: 0;
+            }
+            @media (min-width: 992px) {
+                font-size: 24px;
+                padding-left: 0;
+            }
+            @media (min-width: 1200px) {
+                font-size: 28px;
+                padding-left: 0;
+            }
+        }
+        .defis-container-text {
+            p {
+                font-family: "Lato";
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 150%;
+                color: #9F9F9F;
+                @media (min-width: 576px) {
+                    font-size: 18px;
+                    margin-top: 50px;
+                }
+                @media (min-width: 768px) {
+                    font-size: 18px;
+                    margin-top: 50px;
+                }
+                @media (min-width: 992px) {
+                    font-size: 18px;
+                    margin-top: 50px;
+                }
+                @media (min-width: 1200px) {
+                    margin-top: 50px;
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,42 @@
+a {
+    text-decoration: none;
+}
+.defi-card-container {
+    padding-bottom: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding-left:15px; 
+    position: relative;
+    .defi-parcours {
+        padding-top: 10px;
+        font-family: "Lato";
+        font-size: 12px;
+        font-weight: 300;
+        line-height: 150%;
+        color: white;
+        text-transform: uppercase;
+        @media (min-width: 1200px) {
+            font-size: 14px;
+            
+        }
+    }
+    .defi__title {
+        width: 80%;
+        font-family: "Lato";
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 150%;
+        color: white;
+        @media (min-width: 1200px) {
+            font-size: 20px;
+            width: 50%;
+        }
+    }
+    .arrow__defi {
+        position: absolute;
+        top:50%;
+        right: 3%;
+        transform: translateY(-50%);
+        
+    }
+}

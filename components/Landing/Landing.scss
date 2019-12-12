@@ -1,0 +1,245 @@
+body {
+    margin: 0;
+}
+.home-container__container {
+    width: 100vw;
+    // background: #FAF8F2;
+
+    .home-image__container {
+        width: 100%;
+        height: auto;
+        @media (min-width: 1280px) {
+            margin-top: -100px;
+        }
+        img.home__image {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .home__introduction--container {
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 30px;
+        background: #626B7F;
+        position: relative;
+        margin-top: -5px;
+        @media (min-width: 576px) {
+            padding-left: 15%;
+            padding-right: 15%;
+        }
+        @media (min-width: 768px) {
+            padding-left: 15%;
+            padding-right: 15%;
+        }
+        @media (min-width: 990px) {
+            padding-left: 25%;
+            height: 400px;
+            padding-right: 25%;
+        }
+        @media (min-width: 1200px) {
+            // padding-top: 30px;
+            padding-left: 20%;
+            padding-right: 20%;
+            
+        }
+        .home__introduction--title {
+            margin: -2px;
+            padding-top: 30px;
+            font-family: "Lato";
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 130%;
+            color: #F9572D;
+            text-align: center;
+            @media (min-width: 990px) {
+                padding-top: 15%;
+                font-size: 32px;
+            }
+            @media (min-width: 1200px) {
+                font-size: 36px;
+            }
+        }
+        .home__introduction--text {
+            font-family: "Lato";
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 150%;
+            color: white;
+            text-align: center;
+            @media (min-width: 990px) {
+                font-size: 20px;
+            }
+            @media (min-width: 1200px) {
+                font-size: 24px;
+            }
+        }
+        .svg-img {
+            position: absolute;
+            // width:100vw;
+            // height: 50px;
+            bottom:-13%;
+            left:0;
+            z-index: 1;
+            
+            @media (min-width: 445px) {
+                bottom: -20%;
+            }
+            @media (min-width: 600px) {
+                bottom: -29%;
+            }
+            @media (min-width: 800px) {
+                bottom: -39%;
+            }
+            @media (min-width: 990px) {
+                bottom: -30%;
+            }
+            @media (min-width: 1075px) {
+                bottom: -32%;
+            }
+            @media (min-width: 1200px) {
+                bottom: -34%;
+            }
+            @media (min-width: 1500px) {
+                bottom: -46%;
+            }
+        }
+    }
+
+    .home__steps--container {
+        padding : 15px;
+        padding-top: 30px;
+        background: #FAF8F2;
+        position: relative;
+        @media (min-width: 445px) {
+            padding-top: 30px;
+        }
+        @media (min-width: 600px) {
+            padding-top: 40px;
+        }
+        @media (min-width: 800px) {
+            padding-top: 70px;
+        }
+        @media (min-width: 990px) {
+            padding-top: 100px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            .home__step {
+                width: 33%;
+            }
+        }
+        @media (min-width:1075px) {
+            padding-top: 120px;
+        }
+        @media (min-width: 1200px) {
+            padding-top: 150px;
+        }
+        @media (min-width: 1440px) {
+            padding-top: 200px;
+        }
+        @media (min-width: 1500px) {
+            padding-top: 250px;
+        }
+        
+        .home__step {
+            margin-top: 50px;
+            .img_step {
+                height: 60px;
+                margin-left: 50%;
+                transform: translateX(-50%);
+                @media (min-width: 1440px) {
+                    height: 100px;
+                }
+            }
+            .home__step--title {
+                font-family: "Lato";
+                font-size: 24px;
+                font-weight: 700;
+                line-height: 130%;
+                text-align: center;
+                color: #F9572D;
+                margin-bottom: 15px;
+                margin-top: 10px;
+                @media (min-width: 1440px) {
+                    font-size: 28px;
+                }
+            }
+            .home__step--text {
+                font-family: "Lato";
+                text-align: center;
+                font-size: 16px;
+                font-weight: 400;
+                padding-left: 30px;
+                padding-right: 30px;
+                line-height: 150%;
+                @media (min-width: 576px) {
+                    font-size: 18px;
+                }
+                @media (min-width: 1440px) {
+                    font-size: 20px;
+                }
+    
+            }
+        }
+        .svg-img {
+            position: absolute;
+            width:100%;
+            height: auto;
+            bottom:-5%;
+            left:0;
+            @media (min-width: 576px) {
+                bottom: -10%;
+            }
+            @media (min-width: 768px) {
+                bottom: -13%; 
+            }
+            @media (min-width: 905px) {
+                bottom: -15%; 
+            }
+            @media (min-width: 990px) {
+                bottom: -34%;
+            }
+            @media (min-width: 1300px) {
+                bottom: -40%;
+            }
+            @media (min-width: 1440px) {
+                bottom: -38%;
+            }
+            @media (min-width: 1500px) {
+                bottom: -40%;
+            }
+        }
+        
+    }
+
+    .home__parcours--container {
+        padding-top: 50px;
+        margin-bottom: 30px;
+        @media (min-width: 576px) {
+            padding-top: 100px;
+        }
+        @media (min-width: 990px) {
+            padding-top: 200px;
+        }
+        .home__parcours--title {
+            margin-left: 15px;
+            font-family: "Lato";
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 130%;
+            color: #F9572D;
+            text-align: center;
+            @media (min-width: 990px) {
+                font-size: 36px;
+            }
+        }
+    }
+
+    .footer {
+        height: 250px;
+        width: 100%;
+        background: rgba(255, 129, 129, 0.674);
+    }
+
+}

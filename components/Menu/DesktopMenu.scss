@@ -1,0 +1,103 @@
+.desktop_menu {
+    position: fixed;
+    height: 60px;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+
+    .desktop__menu__scb-logo {
+        display: flex;
+        flex-direction: row;
+        align-items: left;
+        margin-left: 10%;
+        img {
+            width: 100px;
+            height: 50px;
+        }
+        
+    }
+    .desktop-menu-right {
+        width: 40%;
+        position: relative;
+
+        @media (min-width: 992px) {
+            width: 70%;
+            margin-right: 0px;
+        }
+        @media (min-width: 1100px) {
+            width: 60%;
+            margin-right: 0px;
+        }
+        @media (min-width: 1200px) {
+            width: 60%;
+            margin-right: 30px;
+        }
+        @media (min-width: 1300px) {
+            width: 50%;
+            margin-right: 30px;
+        }
+    }
+    ul.desktop-menu__list {
+        display: inline-block;
+        width: 60%;
+        height: 40px;
+        transform: translateY(-50%);
+        li {
+            list-style: none;
+            display: inline-block;
+            padding: auto;
+            vertical-align: center;
+            position: relative;
+            width: 33%;
+            height: auto;
+            span {
+                text-align: center;
+                width: 100%;
+                position: absolute;
+                top:50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                font-family: "Lato";
+                font-size: 16px;
+                color: black;
+                font-weight: 500;
+                text-transform: uppercase;
+            }
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .desktop-menu__entourage-cta {
+        position: relative;
+        height: 40px;
+        width: 210px;
+        border-radius: 5px;
+        background: #F25E20;
+        margin-top: 10px;
+        display: inline-block;
+        span {
+            position: absolute;
+            top: 50%;
+            left:50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-family: "Lato";
+            font-size: 14px;
+            color: white;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
