@@ -20,10 +20,63 @@ import SCBCharacter from './../SCBCharacter/SCBCharacter'
 
 export default class Entete extends Component {
     
+    renderParcourIntro(parcour, entete, enumeration, quizzes_length) {
+        return [
+            parcour.background_mobile && parcour.background_desktop
+                ? <BackgroundImage img={parcour.background_mobile.url} desktop_img={parcour.background_desktop.url}/>
+                : ''
+            ,
+            <div className="back-button" onClick={() => Router.back()} >
+                <img src={backbtn} alt="arrow back" />
+            </div>,
+            <div className="data-container"> 
+                <div className="entete__time-container">
+                    <img className="svg-clock" src={clock} alt="clock img"/>
+                    <span className="time-text"> { parcour.duration } MIN</span>
+                </div> 
+                <h1 className="data-title">{ entete.Titre }</h1>
+            </div>,
+            parcour.personnage 
+                ? <SCBCharacter 
+                    image={ parcour.personnage.url } 
+                    character_name={ parcour.character_name }
+                    character_texte={ entete.texte_personnage }
+                    color={parcour.couleur}
+                    param={'entete'}
+                />
+                : ''
+            ,
+            <EnteteButton title={"commencer"} color={parcour.couleur} slug={parcour.url_slug} chapitre={enumeration} quizz={quizzes_length}></EnteteButton>
+        ];
+    }
+
+    renderParcourEntete(parcour, entete, enumeration) {
+        return [
+            <BackgroundImage img={entete.background.url}></BackgroundImage>,
+            <div className="back-button" onClick={() => Router.back()} >
+                <img src={backbtn} alt="arrow back" />
+            </div>,
+            <div className="data-container"> 
+                <div className="entete__time-container">
+                    <img className="svg-clock" src={clock} alt="clock img"/>
+                    <span className="time-text"> { entete.duree } MIN</span>
+                </div> 
+                <h1 className="data-title">{ entete.Titre }</h1>
+            </div>,
+            <SCBCharacter 
+                image={ parcour.personnage.url } 
+                character_name={ parcour.character_name }
+                character_texte={ entete.texte_personnage }
+                color={parcour.couleur}
+                param={'entete'}
+            />,
+            <EnteteButton title={"commencer"} color={parcour.couleur} slug={parcour.url_slug} chapitre={enumeration}></EnteteButton>
+        ]
+    }
+
     render() {
         const { id, enumeration } = this.props
 
-        let ordre = 1
         return (
             <Query query={ GET_ENTETE_PER_SLUG  } variables={ { id, enumeration } }>
                 {({ loading, error, data }) => {
@@ -35,74 +88,19 @@ export default class Entete extends Component {
                         quizzes_length = parcour.quizzes.length
                     }
                     return (
-                        <div>
-                        {
-                            enumeration === "Intro" 
-                            ? 
-                            <div className="entete-container">
-                            { 
-                                data.parcours.map( (parcour, key) => ( 
-                                parcour.entetes.map( (entete, key) => (
-                                    <div className="entete-container" key={key}>
-                                        <BackgroundImage img={parcour.background_mobile.url} desktop_img={parcour.background_desktop.url}></BackgroundImage>
-                                        <div className="back-button" onClick={() => Router.back()} >
-                                            <img src={backbtn} alt="arrow back" />
-                                        </div>
-                                        <div className="data-container"> 
-                                            <div className="entete__time-container">
-                                                <img className="svg-clock" src={clock} alt="clock img"/>
-                                                <span className="time-text"> { parcour.duration } MIN</span>
-                                            </div> 
-                                            <h1 className="data-title">{ entete.Titre }</h1>
-                                        </div>
-                                        <SCBCharacter 
-                                            image={ parcour.personnage.url } 
-                                            character_name={ parcour.character_name }
-                                            character_texte={ entete.texte_personnage }
-                                            color={parcour.couleur}
-                                            param={'entete'}
-                                        />
-                                        <EnteteButton title={"commencer"} color={parcour.couleur} slug={parcour.url_slug} chapitre={enumeration} quizz={quizzes_length}></EnteteButton>
-                                    </div>
+                        <div>{
+                            <div className="entete-container">{
+                                data.parcours.map( (parcour, parcourKey) => ( 
+                                    parcour.entetes.map( (entete, enteteKey) => (
+                                        <div className="entete-container" key={parcour.id}>{
+                                            enumeration === "Intro" 
+                                            ? this.renderParcourIntro(parcour, entete, enumeration, quizzes_length)
+                                            : this.renderParcourEntete(parcour, entete, enumeration)
+                                        }</div>
+                                    ))
                                 ))
-                                    
-                                ))
-                            }
-                            </div> 
-                            :
-                            <div className="entete-container">
-                            { 
-                                data.parcours.map( (parcour, key) => ( 
-                                parcour.entetes.map( (entete, key) => (
-                                    <div className="entete-container" key={key}>
-                                        <BackgroundImage img={entete.background.url}></BackgroundImage>
-                                        <div className="back-button" onClick={() => Router.back()} >
-                                            <img src={backbtn} alt="arrow back" />
-                                        </div>
-                                        <div className="data-container"> 
-                                            <div className="entete__time-container">
-                                                <img className="svg-clock" src={clock} alt="clock img"/>
-                                                <span className="time-text"> { entete.duree } MIN</span>
-                                            </div> 
-                                            <h1 className="data-title">{ entete.Titre }</h1>
-                                        </div>
-                                        <SCBCharacter 
-                                            image={ parcour.personnage.url } 
-                                            character_name={ parcour.character_name }
-                                            character_texte={ entete.texte_personnage }
-                                            color={parcour.couleur}
-                                            param={'entete'}
-                                        />
-                                        <EnteteButton title={"commencer"} color={parcour.couleur} slug={parcour.url_slug} chapitre={enumeration}></EnteteButton>
-                                    </div>
-                                ))
-                                    
-                                ))
-                            }
-                            </div> 
-                        }
-                        </div>
-                        
+                            }</div>
+                        }</div>
                     )
                 }}
             </Query>

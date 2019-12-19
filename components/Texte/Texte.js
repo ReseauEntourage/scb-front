@@ -11,10 +11,12 @@ import { Markdown } from 'react-showdown';
 
 
 const Texte = ( { id, texte, color, order, slug, items, chapitre } ) => {
-        return (
+    console.log(items, order);
+    return (
         <Query query={ GET_TEXTE_INFO } variables={ { slug, order, chapitre } }>
         {({ loading, error, data }) => {
             if (loading) return <div></div>
+
             return(
                 <div className="container">
                 <Menu slug={ slug }/>
@@ -24,48 +26,42 @@ const Texte = ( { id, texte, color, order, slug, items, chapitre } ) => {
                         // parcour.textes.length === 0 ? <Error statusCode={404}>Erreur</Error> : 
                         parcour.textes.map( ( text ) => (
                             <div className="video-content" key={key}>
-                            <div className="video__video-subtitle">
-                                <h2> { chapitre } </h2>
+                                <div className="video__video-subtitle"><h2>{ chapitre }</h2></div>
+                                <div className="video__video-name"><h1>{ text.titre }</h1></div>
+                                <div className="video__video-text-container">
+                                    <Markdown markup={ text.paragraphe } />
+                                    
+                                    {/* { 
+                                        paragraphes.map( (paragraphe, key) => (
+                                            <p className="video__paragraphe" key={key}> { paragraphe } </p>
+                                        ) ) 
+                                    } */}
+                                </div>
+                                {
+                                    items[items.length] && items[items.length].ordre !== order
+                                    ?   
+                                        <Button 
+                                            title={"continuer"} 
+                                            link={ "/parcours/" } 
+                                            order={order}
+                                            color={color} 
+                                            slug={slug}
+                                            chapitre={chapitre}
+                                            next={false}
+                                        />
+                                    :   
+                                        <Button 
+                                            title={"continuer"} 
+                                            link={ "/parcours/" } 
+                                            order={order} 
+                                            color={color} 
+                                            slug={slug}
+                                            chapitre={chapitre}
+                                            next={true}
+                                        />
+                                }
                             </div>
-                            <div className="video__video-name">
-                                <h1> { text.titre } </h1>
-                            </div>
-                            <div className="video__video-text-container">
-                                <Markdown markup={ text.paragraphe } />
-                                
-                                {/* { 
-                                    paragraphes.map( (paragraphe, key) => (
-                                        <p className="video__paragraphe" key={key}> { paragraphe } </p>
-                                    ) ) 
-                                } */}
-                            </div>
-                            {
-                                items.pop().ordre !== order 
-                                ?   
-                                    <Button 
-                                        title={"continuer"} 
-                                        link={ "/parcours/" } 
-                                        order={order}
-                                        color={color} 
-                                        slug={slug}
-                                        chapitre={chapitre}
-                                        next={false}
-                                    />
-                                :   
-                                    <Button 
-                                        title={"continuer"} 
-                                        link={ "/parcours/" } 
-                                        order={order} 
-                                        color={color} 
-                                        slug={slug}
-                                        chapitre={chapitre}
-                                        next={true}
-                                    />
-                            }
-                            
-                        </div>
                         ))
-                        
                     ))
                 }
                 </div>
@@ -73,7 +69,6 @@ const Texte = ( { id, texte, color, order, slug, items, chapitre } ) => {
         )
         }}
         </Query>
-        
     )
 }
     

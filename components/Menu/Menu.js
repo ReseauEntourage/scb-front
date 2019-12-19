@@ -58,16 +58,14 @@ class Menu extends Component {
         return a[o] > b[o] ? dir : a[o] < b[o] ? -(dir) : 0;
     }).reduce((p, n) => p ? p : n, 0)
 
-    getArrayofLink = (data) => {
-        
+    getArrayofLink = (parcours = []) => {
         let newArray = []
-        data.parcours.map( ( parcour, key) => {
+        parcours.map( ( parcour, key) => {
             newArray = parcour.textes.concat(parcour.quotes).concat(parcour.videos)
         })
         const arr = [...newArray].sort(this.fieldSorter(['-chapitre', 'ordre']))
 
         return arr
-    
     }
 
     handleClickClose() {
@@ -144,6 +142,53 @@ class Menu extends Component {
         }
     }
 
+    renderMenu() {
+        return (
+            <div className="menu__sidebar-container--sidebar">
+                <div className="menu__sidebar__top-container">
+                    <div className="menu__sidebar__logo-container">
+                        <a href='/'>
+                            <img src={scb} alt="" className="menu__sidebar-logo"/>
+                        </a>
+                    </div>
+                    <div className="menu__sidebar-close-container" onClick={ this.handleClickClose }>
+                        <img src={close} alt="" className="menu__sidebar-close"/>
+                    </div>
+                </div>
+
+                <div className="menu__sidebar__list-container">
+                    <ul className="menu__sidebar__list-container--ul">
+                        <li className="menu__sidebar__list-item">
+                            <a href="/parcours">    
+                                <span className="item-title">Les parcours</span>
+                                <img src={arrow} alt="arrow" className="arrow"/>
+                            </a>
+                        </li>
+                        <li className="menu__sidebar__list-item">
+                            <a href="/defis">
+                                <span className="item-title">Les défis</span>
+                                <img src={arrow} alt="arrow" className="arrow"/>
+                            </a> 
+                        </li>
+                        <li className="menu__sidebar__list-item">
+                            <a href="/a-propos">
+                                <span className="item-title">A propos</span>
+                                <img src={arrow} alt="arrow" className="arrow"/>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <a href='https://www.entourage.social/' target="_blank">
+                    <div className="menu__sidebar__entourage-container">
+                        <span className="entourage-title">Agir avec entourage</span>
+                        <img src={arrow_white} alt="arrow" className="arrow"/>
+                    </div>
+                </a>
+            </div>
+        );
+    }
+
     render() {
         const { slug, index, router } = this.props
         const arr = Array.from(this.state.newMap)
@@ -154,14 +199,18 @@ class Menu extends Component {
                         ?
                             <Query query={ GET_MENU_INFO } variables={ { slug } }>
                             {({ loading, error, data }) => {
-                                this.slide = this.getArrayofLink(data)
+                                this.slide = this.getArrayofLink(data.parcours);
                                 const arr = Array.from(this.slide)
                                 this.current_slide = this.initSlideIndex(arr, index, router.query)
                                 
-                                data.parcours.map( (parcour, key) => {
-                                    this.nb_slide = parcour.textes.length + parcour.videos.length + parcour.quotes.length
-                                    this.nb_slide += 3
-                                })
+                                if (data.parcours) {
+                                    data.parcours.map( (parcour, key) => {
+                                        this.nb_slide = parcour.textes.length + parcour.videos.length + parcour.quotes.length
+                                        this.nb_slide += 3
+                                    })
+                                } else {
+                                    this.nb_slide = 0;
+                                }
                                 
                                 return ( 
                                     this.state.width < 992 
@@ -182,54 +231,8 @@ class Menu extends Component {
                                                     </div>
                                                 </div>
                                                 <div className="menu__sidebar-container">
-                                                    <div className="menu__sidebar-container--sidebar">
-                                                        <div className="menu__sidebar__top-container">
-                                                            <div className="menu__sidebar__logo-container">
-                                                                <a href='/'>
-                                                                    <img src={scb} alt="" className="menu__sidebar-logo"/>
-                                                                </a>
-                                                            </div>
-                                                            <div className="menu__sidebar-close-container" onClick={ this.handleClickClose }>
-                                                                <img src={close} alt="" className="menu__sidebar-close"/>
-                                                            </div>
-                                                        </div>
-                                                        <div className="menu__sidebar__list-container">
-                                                            <ul className="menu__sidebar__list-container--ul">
-                                                                <li className="menu__sidebar__list-item">
-                                                                    <a href="/parcours">    
-                                                                        <span className="item-title">
-                                                                            Les parcours
-                                                                        </span>
-                                                                        <img src={arrow} alt="arrow" className="arrow"/>
-                                                                    </a>
-                                                                </li>
-                                                                <li className="menu__sidebar__list-item">
-                                                                    <a href="/defis">
-                                                                        <span className="item-title">
-                                                                            Les défis
-                                                                        </span>
-                                                                        <img src={arrow} alt="arrow" className="arrow"/>
-                                                                    </a> 
-                                                                </li>
-                                                                <li className="menu__sidebar__list-item">
-                                                                    <a href="/a-propos">
-                                                                        <span className="item-title">
-                                                                            A propos
-                                                                        </span>
-                                                                        <img src={arrow} alt="arrow" className="arrow"/>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <a href='https://www.entourage.social/' target="_blank">
-                                                            <div className="menu__sidebar__entourage-container">
-                                                                <span className="entourage-title">
-                                                                    Agir avec entourage
-                                                                </span>
-                                                                <img src={arrow_white} alt="arrow" className="arrow"/>
-                                                            </div>
-                                                        </a>
-                                                    </div>
+                                                    { this.renderMenu() }
+
                                                     <div className="menu_sidebarleft_menu-container">
                                                         <ListMenu slug={slug} data={data} nb={this.nb_slide} handleCloseMenuIntro={() => {this.closeMenuIntra()}}></ListMenu>
                                                     </div>
@@ -237,14 +240,12 @@ class Menu extends Component {
                                                 </div>
                                             </div>
                                         </div>
-                                        
                                     :
                                     <DesktopMenu />
                                 )
                             }}
                             </Query>
-                            :
-                                (this.state.width < 992 
+                            : (this.state.width < 992 
                                     ? 
                                         <div className="menu-container-mobile center">
                                             <div className="menu__burger-icon" onClick={ this.handleClickOpen } >
@@ -256,58 +257,13 @@ class Menu extends Component {
                                                 </a>
                                             </div>
                                             <div className="menu__sidebar-container">
-                                                <div className="menu__sidebar-container--sidebar">
-                                                    <div className="menu__sidebar__top-container">
-                                                        <div className="menu__sidebar__logo-container ">
-                                                            <img src={scb} alt="" className="menu__sidebar-logo"/>
-                                                        </div>
-                                                        <div className="menu__sidebar-close-container" onClick={ this.handleClickClose }>
-                                                            <img src={close} alt="" className="menu__sidebar-close"/>
-                                                        </div>
-                                                    </div>
-                                                    <div className="menu__sidebar__list-container">
-                                                        <ul className="menu__sidebar__list-container--ul">
-                                                            <li className="menu__sidebar__list-item">
-                                                                <a href="/parcours">    
-                                                                    <span className="item-title">
-                                                                        Les parcours
-                                                                    </span>
-                                                                    <img src={arrow} alt="arrow" className="arrow"/>
-                                                                </a>
-                                                            </li>
-                                                            <li className="menu__sidebar__list-item">
-                                                                <a href="/defis">
-                                                                    <span className="item-title">
-                                                                        Les défis
-                                                                    </span>
-                                                                    <img src={arrow} alt="arrow" className="arrow"/>
-                                                                </a> 
-                                                            </li>
-                                                            <li className="menu__sidebar__list-item">
-                                                                <a href="/a-propos">
-                                                                    <span className="item-title">
-                                                                        A propos
-                                                                    </span>
-                                                                    <img src={arrow} alt="arrow" className="arrow"/>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <a href='https://www.entourage.social/' target="_blank">
-                                                        <div className="menu__sidebar__entourage-container">
-                                                            <span className="entourage-title">
-                                                                Agir avec entourage
-                                                            </span>
-                                                            <img src={arrow_white} alt="arrow" className="arrow"/>
-                                                        </div>
-                                                    </a>
-                                                </div>
+                                                { this.renderMenu() }
+
                                                 <div className="menu__sidebar-container--background"></div>
                                             </div>  
                                         </div>
                                     :
                                     <DesktopMenu />
-
                         )
                     }
                     </div>

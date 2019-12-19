@@ -63,12 +63,10 @@ const Conclusion = ({ slug }) => {
                         </a>
                       </Link>
                     </div>
-                    <BackgroundImage
-                      img={parcour.background_mobile.url}
-                      desktop_img={
-                        parcour.background_desktop.url
-                      }></BackgroundImage>
-
+                    { parcour.background_mobile
+                        ? <BackgroundImage img={parcour.background_mobile.url} desktop_img={parcour.background_desktop.url} />
+                        : ''
+                    }
                     <ShareButton color={parcour.couleur} />
                   </div>
                 </div>

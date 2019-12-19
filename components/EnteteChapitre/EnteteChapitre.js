@@ -34,6 +34,61 @@ class EnteteChapitre extends React.Component {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
 
+    renderComprendreEntete() {
+        return (<div className="entete__chapitre-container-data"> 
+            <h2 className="entete__chapitre-h2" style={{ textTransform: "uppercase" }}>Partie 1</h2>
+            <h1 className="entete__chapitre-h1">Comprendre</h1>
+            <img 
+                src={comprendre_img} 
+                alt="chapitre img" 
+                style={ this.state.width > 992
+                    ? { width: "230px", height: "auto" }
+                    : { width: "120px", height: "auto" }  
+                } 
+                className="entete__chapitre--image"
+            />
+            <div className="entete__chapitre--text-container">
+                <p className="entete__chapitre--text">Première étape : Comprendre pour agir</p>
+            </div>
+        </div>);
+    }
+    renderChangerEntete() {
+        return (<div className="entete__chapitre-container-data"> 
+            <h2 className="entete__chapitre-h2" style={{ textTransform: "uppercase" }}>Partie 2</h2>
+            <h1 className="entete__chapitre-h1" style={{ textTransform: "capitalize" }}>Changer</h1>
+            <img 
+                src={changer_img} 
+                alt="chapitre img" 
+                style={ this.state.width > 992
+                    ? { width: "230px", height: "auto" }
+                    : { width: "120px", height: "auto" }
+                } 
+                className="entete__chapitre--image"
+            />
+            <div className="entete__chapitre--text-container">
+                <p className="entete__chapitre--text">Comprendre que l’on est une partie essentielle de la solution</p>
+            </div>
+        </div>);
+    }
+    renderAgirEntete() {
+        return (<div className="entete__chapitre-container-data"> 
+            <h2 className="entete__chapitre-h2" style={{ textTransform: "uppercase" }}>Partie 3</h2>
+            <h1 className="entete__chapitre-h1" style={{ textTransform: "capitalize" }}>Agir</h1>
+            <img 
+                src={agir_img} 
+                alt="chapitre img" 
+                style={ this.state.width > 992
+                    ? { width: "auto", height: "260px" }
+                    : { width: "auto", height: "150px" }
+                }
+                className="entete__chapitre--image"
+            />
+            <div className="entete__chapitre--text-container">
+                <p className="entete__chapitre--text"> Passer à l’action</p>
+            </div>
+        </div>);
+    }
+
     render () {
     const {id, enumeration, isDesktop} = this.props
     return (
@@ -46,54 +101,17 @@ class EnteteChapitre extends React.Component {
                         {
                             data.parcours.map(( parcour, key) => (
                                 <div className="chapitre-container" key={key}>
-                                    <BackgroundImage img={parcour.background_mobile.url} desktop_img={parcour.background_desktop.url}/>
+                                    { parcour.background_mobile && parcour.background_desktop
+                                        ? <BackgroundImage img={parcour.background_mobile.url} desktop_img={parcour.background_desktop.url}/>
+                                        : ''
+                                    }
                                     {/* <div className="back-button" onClick={() => Router.back()} >
                                         <img src={backbtn} alt="arrow back" />
                                     </div> */}
                                     <div className="entete__chapitre-container-data"> 
-                                        <h2 className="entete__chapitre-h2" style={{ textTransform: "uppercase" }}>{ `Partie ${ enumeration === "comprendre" ? 1 : ( enumeration === "changer" ? 2 : 3 ) }` }</h2>
-                                        <h1 className="entete__chapitre-h1" style={{ textTransform: "capitalize" }}>{ enumeration }</h1>
-                                        <img 
-                                            src={enumeration === "comprendre" 
-                                            ? comprendre_img 
-                                                : ( enumeration === "changer" 
-                                                ? changer_img 
-                                                : agir_img 
-                                                ) 
-                                            } 
-                                            alt="chapitre img" 
-                                            style={ this.state.width > 992
-                                                ? { 
-                                                    width: `${enumeration === "agir" 
-                                                        ? "auto" 
-                                                        : "230px"}`, 
-                                                    height: `${enumeration === "agir" 
-                                                        ? "260px" 
-                                                        : "auto"}`
-                                                }
-                                                : {
-                                                    width: `${enumeration === "agir" 
-                                                        ? "auto" 
-                                                        : "120px"}`, 
-                                                    height: `${enumeration === "agir" 
-                                                        ? "150px" 
-                                                        : "auto"}` 
-                                                }   
-                                                
-                                            } 
-                                            className="entete__chapitre--image"
-                                        />
-                                        <div className="entete__chapitre--text-container">
-                                            <p className="entete__chapitre--text"> 
-                                                { enumeration === "comprendre"
-                                                    ? "Première étape : Comprendre pour agir"
-                                                    : ( enumeration === "changer"
-                                                        ? "Deuxième étape : Comprendre que l’on est une partie essentielle de la solution"
-                                                        : "Dernière étape : Passer à l’action"
-                                                    )
-                                                } 
-                                            </p>
-                                        </div>
+                                        { enumeration === "comprendre" ? this.renderComprendreEntete() : '' }
+                                        { enumeration === "changer" ? this.renderChangerEntete() : '' }
+                                        { enumeration === "agir" ? this.renderAgirEntete() : '' }
                                     </div>
                                     <EnteteButton title={"commencer"} color={parcour.couleur} slug={id} chapitre={enumeration}></EnteteButton>
                                 </div>
