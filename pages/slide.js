@@ -1,37 +1,36 @@
-import React from 'react'
+import React from 'react';
 
-import { Query } from 'react-apollo'
-import { GET_CUSTOM, GET_ORDER } from './../graphql/querries'
-import Video from './../components/Video/Video'
-import Texte from './../components/Texte/Texte'
-import Quote from './../components/Quote/Quote'
-import Quizz from './../components/Quizz/Quizz'
+import { Query } from 'react-apollo';
+import { GET_CUSTOM, GET_ORDER } from '../graphql/querries';
+import Video from '../components/Video/Video';
+import Texte from '../components/Texte/Texte';
+import Quote from '../components/Quote/Quote';
+import Quizz from '../components/Quizz/Quizz';
 
 const dynamicSort = property => {
   let sortOrder = 1
   if (property[0] === '-') {
-    sortOrder = -1
-    property = property.substr(1)
+    sortOrder = -1;
+    property = property.substr(1);
   }
   return function(a, b) {
-    let result =
-      a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0
-    return result * sortOrder
+    let result = a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
+    return result * sortOrder;
   }
 }
 
 const getArrayofLink = data => {
-  let newArray = []
+  let newArray = [];
 
-  data.parcours.map((parcour, key) => {
+  data.parcours.map(parcour => {
     newArray = parcour.textes
       .concat(parcour.quotes)
       .concat(parcour.videos)
-      .concat(parcour.quizzes)
+      .concat(parcour.quizzes);
   })
 
-  const arr = [...newArray].sort(dynamicSort('ordre'))
-  return arr
+  const arr = [...newArray].sort(dynamicSort('ordre'));
+  return arr;
 }
 
 const Custom = ({ data, id, order, chapitre }) => {
@@ -90,7 +89,7 @@ const Custom = ({ data, id, order, chapitre }) => {
 
 class Slide extends React.Component {
   static getInitialProps({ query: { id, chapitre, order } }) {
-    return { postId: id, postChapitre: chapitre, postOrder: order }
+    return { postId: id, postChapitre: chapitre, postOrder: order };
   }
 
   render() {
@@ -115,4 +114,4 @@ class Slide extends React.Component {
   }
 }
 
-export default Slide
+export default Slide;

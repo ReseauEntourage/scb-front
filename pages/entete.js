@@ -1,9 +1,9 @@
-import Entete from '../components/Entete/Entete'
-import React from 'react'
+import Entete from '../components/Entete/Entete';
+import React from 'react';
 
 class Index extends React.Component {
   static getInitialProps({ query: { id, chapitre } }) {
-    return { postId: id, postChapitre: chapitre }
+    return { postId: id, postChapitre: chapitre };
   }
 
   render() {
@@ -17,4 +17,4 @@ class Index extends React.Component {
   }
 }
 
-export default Index
+export default Index;

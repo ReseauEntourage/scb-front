@@ -1,31 +1,27 @@
-import React, { useState, useEffect } from 'react'
-import './Quizz.scss'
+import React, { useState, useEffect } from 'react';
+import './Quizz.scss';
 
-import Menu from './../Menu/Menu'
-import QuizzButton from './QuizzButton'
-import './QuizzButton.scss'
+import Menu from '../Menu/Menu';
+import QuizzButton from './QuizzButton';
+import './QuizzButton.scss';
 
-import './Answer.scss'
+import './Answer.scss';
 
-import gql from 'graphql-tag'
-import { GET_QUIZZ } from './../../graphql/querries'
-import { Query } from 'react-apollo'
+import { GET_QUIZZ } from '../../graphql/querries';
+import { Query } from 'react-apollo';
 
 const Quizz = ({ slug, number, items }) => {
-  const [reponse_un_state, setUnState] = useState('not-active')
-  const [reponse_deux_state, setDeuxState] = useState('not-active')
-  const [reponse_trois_state, setTroisState] = useState('not-active')
+  const [reponse_un_state, setUnState] = useState('not-active');
+  const [reponse_deux_state, setDeuxState] = useState('not-active');
+  const [reponse_trois_state, setTroisState] = useState('not-active');
 
-  const getRandomInt = max => {
-    return Math.floor(Math.random() * Math.floor(max))
-  }
-  const [state, setState] = useState({ random: 0 })
+  const [state, setState] = useState({ random: 0 });
 
-  const [activeInput, setActiveInput] = useState(0)
+  const [activeInput, setActiveInput] = useState(0);
 
   useEffect(() => {
     console.log(state.random)
-  }, [state])
+  }, [state]);
 
   const onButtonClick = data => {
     switch (data) {
@@ -62,9 +58,7 @@ const Quizz = ({ slug, number, items }) => {
         break
     }
 
-    // active !== "active" ? setActive("active") : setActive("not-active")
-
-    setActiveInput(data)
+    setActiveInput(data);
   }
 
   return (
@@ -75,7 +69,7 @@ const Quizz = ({ slug, number, items }) => {
           <div className='container'>
             <Menu slug={slug} index={'quizz'} />
             <div className='quizz-container'>
-              {data.parcours.map((parcour, key) =>
+              {data.parcours.map(parcour =>
                 parcour.quizzes.map((quizz, key) => (
                   <div className='quizz' key={key}>
                     <div className='quizz__quizz-subtitle'>

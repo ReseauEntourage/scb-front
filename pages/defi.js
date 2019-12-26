@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import Defi from './../components/Defi/Defi'
+import Defi from '../components/Defi/Defi';
 
 class DefiPage extends React.Component {
 
   static getInitialProps ({ query: { id } }) {
-    return { postId: id }
+    return { postId: id };
   }
   
   render() {

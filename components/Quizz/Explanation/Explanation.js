@@ -1,44 +1,42 @@
-import React from 'react'
-import './Explanation.scss'
-import EnteteButton from './../../Entete/Button/EnteteButton'
-import Menu from './../../Menu/Menu'
-import Button from './../../Button/Button'
-import validate from './../../../static/images/validate.svg'
-import refuse from './../../../static/images/refuse.svg'
+import React from 'react';
+import './Explanation.scss';
+import Button from '../../Button/Button';
+import validate from '../.../static/images/validate.svg';
+import refuse from '../.../static/images/refuse.svg';
 
-import { GET_QUIZZ, GET_ORDER } from './../../../graphql/querries'
-import { Query } from 'react-apollo'
+import { GET_QUIZZ } from '../.../graphql/querries';
+import { Query } from 'react-apollo';
 
 const dynamicSort = property => {
-  let sortOrder = 1
+  let sortOrder = 1;
   if (property[0] === '-') {
-    sortOrder = -1
-    property = property.substr(1)
+    sortOrder = -1;
+    property = property.substr(1);
   }
   return function(a, b) {
     let result =
-      a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0
-    return result * sortOrder
+      a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
+    return result * sortOrder;
   }
 }
 
 const getArrayofLink = data => {
-  let newArray = []
+  let newArray = [];
 
-  data.parcours.map((parcour, key) => {
+  data.parcours.map(parcour => {
     newArray = parcour.textes
       .concat(parcour.quotes)
       .concat(parcour.videos)
-      .concat(parcour.quizzes)
-  })
+      .concat(parcour.quizzes);
+  });
 
-  const arr = [...newArray].sort(dynamicSort('ordre'))
-  return arr
+  const arr = [...newArray].sort(dynamicSort('ordre'));
+  return arr;
 }
 
 const Explanation = ({ data, slug, order, chapitre, value }) => {
-  let items = getArrayofLink(data)
-  let number = order
+  let items = getArrayofLink(data);
+  let number = order;
   return (
     <Query query={GET_QUIZZ} variables={{ slug, number }}>
       {({ loading, error, data }) => {
@@ -53,20 +51,12 @@ const Explanation = ({ data, slug, order, chapitre, value }) => {
                   <div className='explanation__status-container'>
                     {value == 'true' ? (
                       <div>
-                        <img
-                          className='validation-icon'
-                          src={validate}
-                          alt='bonne reponse svg'
-                        />
+                        <img className='validation-icon' src={validate} alt='bonne reponse svg'/>
                         <div className='validation'> Réponse correcte </div>
                       </div>
                     ) : (
                       <div>
-                        <img
-                          className='validation-icon'
-                          src={refuse}
-                          alt='mauvaise reponse svg'
-                        />
+                        <img className='validation-icon' src={refuse} alt='mauvaise reponse svg'/>
                         <div className='validation'> Réponse incorrecte </div>
                       </div>
                     )}
@@ -93,12 +83,6 @@ const Explanation = ({ data, slug, order, chapitre, value }) => {
                       />
                     )}
                   </div>
-                  {/* <EnteteButton 
-                                            title={"continuer"} 
-                                            color={parcour.couleur}
-                                            chapitre={"quizz"}
-                                            slug={slug}
-                                        /> */}
                 </div>
               ))
             )}
@@ -106,7 +90,7 @@ const Explanation = ({ data, slug, order, chapitre, value }) => {
         )
       }}
     </Query>
-  )
+  );
 }
 
-export default Explanation
+export default Explanation;

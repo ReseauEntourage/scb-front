@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
-import { Query } from 'react-apollo'
-import { GET_ORDER } from './../graphql/querries'
-import Explanation from '../components/Quizz/Explanation/Explanation'
+import { Query } from 'react-apollo';
+import { GET_ORDER } from '../graphql/querries';
+import Explanation from '../components/Quizz/Explanation/Explanation';
 
 class explanation extends React.Component {
   static getInitialProps({ query: { id, chapitre, order, value } }) {
@@ -11,7 +11,7 @@ class explanation extends React.Component {
       postChapitre: chapitre,
       postOrder: order,
       postValue: value
-    }
+    };
   }
 
   render() {
@@ -37,4 +37,4 @@ class explanation extends React.Component {
   }
 }
 
-export default explanation
+export default explanation;

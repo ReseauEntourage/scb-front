@@ -1,44 +1,42 @@
 a {
-    .button-container {
-        position: relative;
-        height: 50px;
-        margin-top: 30px;
-        margin-bottom: 30px;
-        border-radius: 5px;
-        // background: #6FB1E1;
-        z-index: -1;
-        
-        .button-title {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-    
-            color: #FFFFFF;
-    
-            font-family: "Lato";
-            font-weight: 600;
-            font-size: 16px;
-            text-transform: uppercase;
-        }
+  .button-container {
+    position: relative;
+    height: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    z-index: -1;
+
+    .button-title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      color: #ffffff;
+
+      font-family: "Lato";
+      font-weight: 600;
+      font-size: 16px;
+      text-transform: uppercase;
     }
-    .button-container.quote {
-        margin-top: -5px;
-    }
+  }
+  .button-container.quote {
+    margin-top: -5px;
+  }
 }
 
 .btn-container {
-    @media (min-width: 768px) {
-        padding-left: 25%;
-        padding-right: 25%;
-    }
-    @media (min-width: 992px) {
-
-        padding-left: 30%;
-        padding-right: 30%;
-    }
-    @media (min-width: 1200px) {
-        padding-left: 30%;
-        padding-right: 30%;
-    }
+  @media (min-width: 768px) {
+    padding-left: 25%;
+    padding-right: 25%;
+  }
+  @media (min-width: 992px) {
+    padding-left: 30%;
+    padding-right: 30%;
+  }
+  @media (min-width: 1200px) {
+    padding-left: 30%;
+    padding-right: 30%;
+  }
 }

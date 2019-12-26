@@ -1,11 +1,9 @@
-import React from 'react'
-import Card from './../components/Card/Card'
-import Menu from './../components/Menu/Menu'
-import Explanation from './../components/Quizz/Explanation/Explanation'
+import React from 'react';
+import Explanation from '../components/Quizz/Explanation/Explanation';
 
 class About extends React.Component {
   static getInitialProps({ query: { id, number, value } }) {
-    return { postId: id, postNumber: number, postValue: value }
+    return { postId: id, postNumber: number, postValue: value };
   }
 
   render() {
@@ -21,4 +19,4 @@ class About extends React.Component {
   }
 }
 
-export default About
+export default About;
