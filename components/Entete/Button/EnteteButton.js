@@ -3,6 +3,7 @@ import React from "react";
 import "./EnteteButton.scss";
 
 const EnteteButton = ({ title, color, slug, chapitre }) => {
+  let href = '';
   if (chapitre === "Intro") {
     title = 'Commencer';
     href = `/parcours/${slug}/comprendre/0`;
