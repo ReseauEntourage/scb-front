@@ -1,69 +1,67 @@
 .character__image {
-    width: auto;
-    height: 140px;
-    margin-left: 10px;
+  width: auto;
+  height: 140px;
+  margin-left: 10px;
 
-    @media (min-width: 768px) {
-        margin-left: 22%;
-    }
-    @media (min-width: 992px) {
-        margin-left: 28%; 
-    }
-    @media (min-width: 1200px) {
-        height: 180px;
-    }
+  @media (min-width: 768px) {
+    margin-left: 22%;
+  }
+  @media (min-width: 992px) {
+    margin-left: 28%;
+  }
+  @media (min-width: 1200px) {
+    height: 180px;
+  }
 }
 
 .character-container.entete {
-    position: absolute;
-    bottom: 50px;
-    
+  position: absolute;
+  bottom: 50px;
 }
 
 .character-container.quote {
-    position: relative;
-    margin-top: 50px;
-    //  bottom: calc(30px + 46px);       
+  position: relative;
+  margin-top: 50px;
 }
 .character__bubble {
-    margin-right: 10px;
+  margin-right: 10px;
+  background: white;
+  padding: 15px;
+  margin-left: calc(30vw - 15px);
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: -1;
+  @media (min-width: 576px) {
+    margin-right: 10%;
+  }
+  @media (min-width: 992px) {
+    margin-right: 10%;
+  }
+  @media (min-width: 1200px) {
+    margin-right: 10%;
+  }
+  &::after {
+    content: "";
+    width: 20px;
+    height: 20px;
     background: white;
-    padding: 15px;
-    margin-left: calc(30vw - 15px);
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-    position: relative;
-    z-index: -1;
-    @media (min-width: 576px) {
-        margin-right: 10%;
-    }
-    @media (min-width: 992px) {
-        margin-right: 10%;
-    }
-    @media (min-width: 1200px) {
-        margin-right: 10%;
-    }
-    &::after {
-        content: "";
-        width: 20px;
-        height: 20px;
-        background: white;
-        transform: rotateZ(50deg);
-        position: absolute;
-        bottom: -5%;
-    }
-    span {
-        font-family: 'Lato';
-        font-size: 16;
-        font-weight: 400;
-        margin-left: 10px;
-    }
-    p {
-        font-family: 'Lato';
-        font-size: 16px;
-        font-weight: 400;
-        margin-left: 10px;
-        margin-top: 2px;
-        margin-bottom: 0;
-    }
+    transform: rotateZ(50deg);
+    position: absolute;
+    bottom: -5%;
+  }
+  span {
+    font-family: "Lato";
+    font-size: 16;
+    font-weight: 400;
+    margin-left: 10px;
+  }
+  p {
+    font-family: "Lato";
+    font-size: 16px;
+    font-weight: 400;
+    margin-left: 10px;
+    margin-top: 2px;
+    margin-bottom: 0;
+  }
 }

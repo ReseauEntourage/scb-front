@@ -1,53 +1,52 @@
 /* /pages/index.js */
-import React from "react"
+import React from 'react';
 
-import { Query } from 'react-apollo'
-import gql from 'graphql-tag'
-import { GET_TEXT } from './../graphql/querries'
+import { Query } from 'react-apollo';
+import { GET_TEXT } from '../graphql/querries';
 
-import Menu from './../components/Menu/Menu'
+import Menu from '../components/Menu/Menu';
 
 class Cards extends React.Component {
 
-    constructor(props) {
-        super(props)
-   
-        this.state = {
-          paragraphes: []
-        }
-      }
-    
-    subStringData = (text) => {
-        if(text.paragraphe.includes("\n")) {
-            const res = text.paragraphe.split("\n")
-            
-            return res   
-        }
-        return text
-    }
+  constructor(props) {
+    super(props);
 
-    render() {
-        return (
-            <Query query={ GET_TEXT } >
-                {({ loading, error, data }) => {
-                    data.parcour.textes.map( (text, key) => {
-                        this.state.paragraphes = this.subStringData(text)
-                    }) 
+    this.state = {
+      paragraphes: []
+    };
+  }
 
-                    return (
-                        <div className="container">
-                            <Menu />
-                            <div className="texxt">
-                            { this.state.paragraphes.map( (paragraphe, key) => (
-                                <p className="tex"> { paragraphe } </p>
-                            ) ) }
-                            </div>
-                        </div>
-                    )
-                }}
-            </Query>
-        )
+  subStringData = (text) => {
+    if (text.paragraphe.includes("\n")) {
+      const res = text.paragraphe.split("\n");
+
+      return res;
     }
+    return text;
+  }
+
+  render() {
+    return (
+      <Query query={GET_TEXT} >
+        {({ loading, error, data }) => {
+          data.parcour.textes.map(text => {
+            this.state.paragraphes = this.subStringData(text);
+          })
+
+          return (
+            <div className="container">
+              <Menu />
+              <div className="texxt">
+                {this.state.paragraphes.map(paragraphe => (
+                  <p className="tex"> {paragraphe} </p>
+                ))}
+              </div>
+            </div>
+          )
+        }}
+      </Query>
+    )
+  }
 }
 
 export default Cards;

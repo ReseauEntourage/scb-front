@@ -1,10 +1,10 @@
 import React from 'react';
-import Quizz from './../components/Quizz/Quizz'
+import Quizz from '../components/Quizz/Quizz';
 
-export default class Quizz_page extends React.Component {
+class Quizz_page extends React.Component {
 
     static getInitialProps ({ query: { id, number } }) {
-      return { postId: id, postNumber: number }
+      return { postId: id, postNumber: number };
     }
     
     render() {
@@ -15,3 +15,5 @@ export default class Quizz_page extends React.Component {
       );
     }
 }
+
+export default Quizz_page;

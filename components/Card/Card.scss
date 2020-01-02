@@ -1,80 +1,78 @@
 .card-container {
-    position: relative;
+  position: relative;
 
-    border-radius: 10px;
-    height: 90px; 
+  border-radius: 10px;
+  height: 90px;
 
-    overflow: hidden;
+  overflow: hidden;
 
-    margin-bottom: 20px;
-    .card__data-container {
-        position: absolute;
-        top : 50%;
-        transform: translateY(-50%);
-        width: 60%;
-        margin-left: 24px;
-        
-        .card__title-container {
-            font-family: "Lato";
-            font-size: 18px;
-            font-weight: 800px;
-            color: white; 
-            margin-bottom: 10px;
-            margin-top: 0px;
-        }
+  margin-bottom: 20px;
+  .card__data-container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60%;
+    margin-left: 24px;
 
-        .card__time-container {
-            display: inline-block;
-
-            .svg-clock {
-                height: 14px;
-                width: 14px;
-                transform: translateY(15%);
-            }
-            .time-text {
-                margin-left: 4px;
-                font-family: "Lato";
-                font-size: 12px;
-                font-weight: 400px;
-                color: white; 
-                
-            }
-        }
+    .card__title-container {
+      font-family: "Lato";
+      font-size: 18px;
+      font-weight: 800px;
+      color: white;
+      margin-bottom: 10px;
+      margin-top: 0px;
     }
-    .card__img {
-        z-index: 1;
-        position: absolute;
-        right:5%;
-        height: 66px; 
-        top:50%;
-        transform: translateY(-50%);
-        img {
-            height: 100%;
-        }
+
+    .card__time-container {
+      display: inline-block;
+
+      .svg-clock {
+        height: 14px;
+        width: 14px;
+        transform: translateY(15%);
+      }
+      .time-text {
+        margin-left: 4px;
+        font-family: "Lato";
+        font-size: 12px;
+        font-weight: 400px;
+        color: white;
+      }
     }
+  }
+  .card__img {
+    z-index: 1;
+    position: absolute;
+    right: 5%;
+    height: 66px;
+    top: 50%;
+    transform: translateY(-50%);
+    img {
+      height: 100%;
+    }
+  }
 }
 
 .cards-container {
-    padding-left: 15px; 
-    padding-right: 15px;
-    margin-bottom: 60px; 
-    @media (min-width: 576px) {
-        padding-left: 15%;
-        padding-right: 15%;
-    }
-    @media (min-width: 768px) {
-        padding-left: 15%;
-        padding-right: 15%;
-    }
-    @media (min-width: 990px) {
-        padding-left: 25%;
-        height: 400px;
-        padding-right: 25%;
-    }
-    @media (min-width: 1200px) {
-        // padding-top: 30px;
-        padding-left: 25%;
-        padding-right: 25%;
-        
-    }
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 60px;
+  @media (min-width: 576px) {
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+  @media (min-width: 768px) {
+    padding-left: 15%;
+    padding-right: 15%;
+  }
+  @media (min-width: 990px) {
+    padding-left: 25%;
+    height: 400px;
+    padding-right: 25%;
+  }
+  @media (min-width: 1200px) {
+    // padding-top: 30px;
+    padding-left: 25%;
+    padding-right: 25%;
+  }
 }
