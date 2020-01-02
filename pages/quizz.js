@@ -1,19 +1,19 @@
-import React from 'react';
+import './quizz.scss';
+import AppShell from '../components/AppShell/AppShell';
 import Quizz from '../components/Quizz/Quizz';
+import Menu from '../components/Menu/Menu';
 
-class Quizz_page extends React.Component {
-
-    static getInitialProps ({ query: { id, number } }) {
-      return { postId: id, postNumber: number };
+function quizz({ postId, postNumber }) {
+  return <AppShell 
+    appHeader={
+      <Menu slug={postId} index={'quizz'} />
     }
-    
-    render() {
-      return (
-        <div className="container-fluid">
-          <Quizz slug={this.props.postId} number={this.props.postNumber} />
-        </div>
-      );
+    appContent={
+      <Quizz className="container" slug={postId} number={postNumber} />
     }
+  />
 }
 
-export default Quizz_page;
+quizz.getInitialProps = ({ query: { id, number } }) => ({ postId: id, postNumber: number });
+
+export default quizz;

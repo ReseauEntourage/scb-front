@@ -1,18 +1,18 @@
-import React from 'react';
-
+import AppShell from '../components/AppShell/AppShell';
 import Conclusion from '../components/Conclusion/Conclusion';
+import Menu from '../components/Menu/Menu';
 
-class Index extends React.Component {
-
-  static getInitialProps ({ query: { id } }) {
-    return { postId: id };
-  }
-  
-  render() {
-    return (
-      <Conclusion slug={this.props.postId}/>
-    )
-  }
+function conclusion({ postId }) {
+  return <AppShell 
+    appHeader={
+      <Menu slug={postId} index={"conclusion"} />
+    }
+    appContent={
+      <Conclusion />
+    }
+  />
 }
 
-export default Index;
+conclusion.getInitialProps = ({ query: { id } }) => ({ postId: id });
+
+export default conclusion;
