@@ -1,7 +1,7 @@
 import React from 'react';
-
-import { Query } from 'react-apollo';
+import { useQuery } from '@apollo/react-hooks';
 import { GET_ORDER } from '../graphql/querries';
+
 import Explanation from '../components/Quizz/Explanation/Explanation';
 
 class explanation extends React.Component {
@@ -15,25 +15,22 @@ class explanation extends React.Component {
   }
 
   render() {
-    return (
-      <Query
-        query={GET_ORDER}
-        variables={{
-          id: this.props.postId,
-          chapitre: this.props.postChapitre
-        }}>
-        {({ loading, error, data }) => {
-          return (
-            <Explanation
-              data={data}
-              slug={this.props.postId}
-              order={this.props.postOrder}
-              chapitre={this.props.postChapitre}
-              value={this.props.postValue}></Explanation>
-          )
-        }}
-      </Query>
-    )
+    const { postId, postChapitre } = this.props;
+
+    const { loading, data } = useQuery(GET_ORDER, {
+      variables: { id: postId, chapitre: postChapitre }
+    });
+
+    if (loading) {
+      return <div></div>;
+    }
+
+    return <Explanation
+      data={data}
+      slug={this.props.postId}
+      order={this.props.postOrder}
+      chapitre={this.props.postChapitre}
+      value={this.props.postValue}></Explanation>;
   }
 }
 

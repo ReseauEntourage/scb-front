@@ -1,7 +1,6 @@
-import React from 'react';
+import "./DesktopMenu.scss";
 import scb from '../../static/images/scb.png';
 
-import "./DesktopMenu.scss";
 const DesktopMenu = () => {
   return (
     <div>

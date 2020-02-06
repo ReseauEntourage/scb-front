@@ -1,5 +1,3 @@
-import React from "react";
-
 import "./ShareButton.scss";
 
 import { MessengerIcon, WhatsappIcon } from "./Icons/Icons";

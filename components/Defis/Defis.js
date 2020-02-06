@@ -1,13 +1,16 @@
 import './Defis.scss';
-import { useQuery } from 'react-apollo';
+import { useQuery } from '@apollo/react-hooks';
 import { GET_ALL_DEFIS } from '../../graphql/querries';
 
 import DefiCard from '../Defi/DefiCard';
 import Footer from '../Footer/Footer';
 
 const Defis = () => {
-  const { data } = useQuery(GET_ALL_DEFIS);
-  console.log(data);
+  const { loading, data } = useQuery(GET_ALL_DEFIS);
+
+  if (loading) {
+    return <div></div>;
+  }
 
   const defis = data.defis.map((defi, key) =>
     <DefiCard key={key} parcours={defi.parcours} defi={defi} />

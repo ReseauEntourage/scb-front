@@ -1,11 +1,10 @@
-import React from 'react';
 import './Explanation.scss';
+import { useQuery } from '@apollo/react-hooks';
+import { GET_QUIZZ } from '../.../graphql/querries';
+
 import Button from '../../Button/Button';
 import validate from '../.../static/images/validate.svg';
 import refuse from '../.../static/images/refuse.svg';
-
-import { GET_QUIZZ } from '../.../graphql/querries';
-import { Query } from 'react-apollo';
 
 const dynamicSort = property => {
   let sortOrder = 1;
@@ -35,62 +34,63 @@ const getArrayofLink = data => {
 }
 
 const Explanation = ({ data, slug, order, chapitre, value }) => {
+  const { loading, data } = useQuery(GET_QUIZZ, {
+    variables: { slug, number }
+  });
+
+  if (loading) {
+    return <div></div>;
+  }
+
   let items = getArrayofLink(data);
   let number = order;
-  return (
-    <Query query={GET_QUIZZ} variables={{ slug, number }}>
-      {({ loading, error, data }) => {
-        return (
-          <div>
-            {data.parcours.map((parcour, key) =>
-              parcour.quizzes.map((quizz, key) => (
-                <div
-                  className='explanation-container'
-                  style={{ background: '#' + parcour.couleur }}
-                  key={key}>
-                  <div className='explanation__status-container'>
-                    {value == 'true' ? (
-                      <div>
-                        <img className='validation-icon' src={validate} alt='bonne reponse svg'/>
-                        <div className='validation'> Réponse correcte </div>
-                      </div>
-                    ) : (
-                      <div>
-                        <img className='validation-icon' src={refuse} alt='mauvaise reponse svg'/>
-                        <div className='validation'> Réponse incorrecte </div>
-                      </div>
-                    )}
-                    <div className='explanation__text'>{quizz.explication}</div>
-                    {items.pop().ordre !== order ? (
-                      <Button
-                        title={'continuer'}
-                        link={'/parcours/'}
-                        order={order}
-                        color={parcour.couleur}
-                        slug={slug}
-                        chapitre={chapitre}
-                        next={false}
-                      />
-                    ) : (
-                      <Button
-                        title={'continuer'}
-                        link={'/parcours/'}
-                        order={order}
-                        color={parcour.couleur}
-                        slug={slug}
-                        chapitre={chapitre}
-                        next={true}
-                      />
-                    )}
-                  </div>
-                </div>
-              ))
+
+  return <div>
+    {data.parcours.map((parcour, key) =>
+      parcour.quizzes.map((quizz, key) => (
+        <div
+          className='explanation-container'
+          style={{ background: '#' + parcour.couleur }}
+          key={key}>
+          <div className='explanation__status-container'>
+            {value == 'true' ? (
+              <div>
+                <img className='validation-icon' src={validate} alt='bonne reponse svg'/>
+                <div className='validation'> Réponse correcte </div>
+              </div>
+            ) : (
+              <div>
+                <img className='validation-icon' src={refuse} alt='mauvaise reponse svg'/>
+                <div className='validation'> Réponse incorrecte </div>
+              </div>
+            )}
+            <div className='explanation__text'>{quizz.explication}</div>
+            {items.pop().ordre !== order ? (
+              <Button
+                title={'continuer'}
+                link={'/parcours/'}
+                order={order}
+                color={parcour.couleur}
+                slug={slug}
+                chapitre={chapitre}
+                next={false}
+              />
+            ) : (
+              <Button
+                title={'continuer'}
+                link={'/parcours/'}
+                order={order}
+                color={parcour.couleur}
+                slug={slug}
+                chapitre={chapitre}
+                next={true}
+              />
             )}
           </div>
-        )
-      }}
-    </Query>
-  );
+        </div>
+      ))
+    )}
+  </div>;
 }
 
 export default Explanation;

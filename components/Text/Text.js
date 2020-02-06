@@ -1,9 +1,7 @@
-
-/* /pages/index.js */
 import React from 'react';
-
-import { Query } from 'react-apollo';
+import { useQuery } from '@apollo/react-hooks';
 import { GET_TEXT } from '../graphql/querries';
+/* /pages/index.js */
 
 class Cards extends React.Component {
 
@@ -24,24 +22,22 @@ class Cards extends React.Component {
     return text;
   }
 
-  render() {
-    return (
-      <Query query={GET_TEXT} >
-        {({ loading, error, data }) => {
-          data.parcour.textes.map(text => {
-            this.state.paragraphes = this.subStringData(text);
-          })
+  render() {  
+    const { loading, data } = useQuery(GET_TEXT);
 
-          return (
-            <div className="texxt">
-              {this.state.paragraphes.map(paragraphe => (
-                <p className="tex"> {paragraphe} </p>
-              ))}
-            </div>
-          )
-        }}
-      </Query>
-    )
+    if (loading) {
+      return <div></div>;
+    }
+
+    data.parcour.textes.map(text => {
+      this.state.paragraphes = this.subStringData(text);
+    });
+
+    return <div className="texxt">
+      {this.state.paragraphes.map(paragraphe => (
+        <p className="tex"> {paragraphe} </p>
+      ))}
+    </div>;
   }
 }
 

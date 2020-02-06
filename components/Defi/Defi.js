@@ -1,5 +1,5 @@
 import './Defi.scss';
-import { useQuery } from 'react-apollo';
+import { useQuery } from '@apollo/react-hooks';
 import { GET_DEFI } from '../../graphql/querries';
 import { Markdown } from 'react-showdown';
 import Link from 'next/link';
@@ -8,9 +8,13 @@ import { withRouter } from 'next/router';
 import backbtn from '../../static/images/back.svg';
 
 const Defi = ({ id }) => {
-  const { data } = useQuery(GET_DEFI, {
+  const { loading, data } = useQuery(GET_DEFI, {
     variables: { id },
   });
+
+  if (loading) {
+    return <div></div>;
+  }
 
   const defi = data.defi;
 

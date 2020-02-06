@@ -1,5 +1,3 @@
-import React from "react";
-
 import "./EnteteButton.scss";
 
 const EnteteButton = ({ title, color, slug, chapitre }) => {

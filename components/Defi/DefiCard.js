@@ -1,4 +1,3 @@
-import React from "react";
 import "./DefiCard.scss";
 import { withRouter } from "next/router";
 
