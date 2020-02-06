@@ -1,17 +1,15 @@
-import React from "react";
-import Menu from "../Menu/Menu";
+import './Quote.scss';
+import React from 'react';
 
-import "./Quote.scss";
+import Button from '../Button/Button';
+import SCBCharacter from '../SCBCharacter/SCBCharacter';
+import { Markdown } from 'react-showdown';
 
-import Button from "../Button/Button";
-import SCBCharacter from "../SCBCharacter/SCBCharacter";
-import { Markdown } from "react-showdown";
-
-import { Query } from "react-apollo";
-import { GET_QUOTE_INFO } from "../../graphql/querries";
+import { Query } from 'react-apollo';
+import { GET_QUOTE_INFO } from '../../graphql/querries';
 
 const subStringData = text => {
-  const res = text.split("\n");
+  const res = text.split('\n');
   return res;
 };
 const Quote = ({
@@ -24,6 +22,8 @@ const Quote = ({
   items,
   chapitre
 }) => {
+  let paragraphes = [];
+
   quote.map(text => {
     paragraphes = subStringData(text.paragraphe);
   });
@@ -32,56 +32,53 @@ const Quote = ({
       {({ loading, error, data }) => {
         if (loading) return <div></div>;
         return (
-          <div className="container">
-            <Menu slug={slug} />
-            <div className="video-container">
-              {data.parcours.map((parcour, key) =>
-                quote.map((text, key) => (
-                  <div className="video-content" key={key}>
-                    <div className="video__video-subtitle">
-                      <h2> {chapitre} </h2>
-                    </div>
-                    <div className="video__video-name">
-                      <h1> {text.titre} </h1>
-                    </div>
-                    <div className="video__video-text-container">
-                      <Markdown markup={text.paragraphe} />
-                    </div>
-                    <SCBCharacter
-                      image={character}
-                      character_name={character_name}
-                      character_texte={text.character_quote}
-                      color={color}
-                      param={"quote"}
-                    />
-
-                    {items.pop().ordre !== order ? (
-                      <Button
-                        title={"continuer"}
-                        link={"/parcours/"}
-                        order={order}
-                        color={color}
-                        slug={slug}
-                        param={"quote"}
-                        chapitre={chapitre}
-                        next={false}
-                      />
-                    ) : (
-                      <Button
-                        title={"continuer"}
-                        link={"/parcours/"}
-                        order={order}
-                        color={color}
-                        slug={slug}
-                        param={"quote"}
-                        chapitre={chapitre}
-                        next={true}
-                      />
-                    )}
+          <div className="video-container">
+            {data.parcours.map((parcour, key) =>
+              quote.map((text, key) => (
+                <div className="video-content" key={key}>
+                  <div className="video__video-subtitle">
+                    <h2> {chapitre} </h2>
                   </div>
-                ))
-              )}
-            </div>
+                  <div className="video__video-name">
+                    <h1> {text.titre} </h1>
+                  </div>
+                  <div className="video__video-text-container">
+                    <Markdown markup={text.paragraphe} />
+                  </div>
+                  <SCBCharacter
+                    image={character}
+                    character_name={character_name}
+                    character_texte={text.character_quote}
+                    color={color}
+                    param={"quote"}
+                  />
+
+                  {items.pop().ordre !== order ? (
+                    <Button
+                      title={"continuer"}
+                      link={"/parcours/"}
+                      order={order}
+                      color={color}
+                      slug={slug}
+                      param={"quote"}
+                      chapitre={chapitre}
+                      next={false}
+                    />
+                  ) : (
+                    <Button
+                      title={"continuer"}
+                      link={"/parcours/"}
+                      order={order}
+                      color={color}
+                      slug={slug}
+                      param={"quote"}
+                      chapitre={chapitre}
+                      next={true}
+                    />
+                  )}
+                </div>
+              ))
+            )}
           </div>
         );
       }}

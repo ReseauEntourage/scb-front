@@ -1,20 +1,18 @@
-import React from 'react';
-
+import AppShell from '../components/AppShell/AppShell';
 import Defi from '../components/Defi/Defi';
+import Menu from '../components/Menu/Menu';
 
-class DefiPage extends React.Component {
-
-  static getInitialProps ({ query: { id } }) {
-    return { postId: id };
-  }
-  
-  render() {
-    return (
-      <div className="container-fluid">
-        <Defi id={this.props.postId}/>
-      </div>
-    );
-  }
+function defi({ postId }) {
+  return <AppShell 
+    appHeader={
+      <Menu slug={null} />
+    }
+    appContent={
+      <Defi id={postId}/>
+    }
+  />
 }
 
-export default DefiPage;
+defi.getInitialProps = ({ query: { id } }) => ({ postId: id });
+
+export default defi;
