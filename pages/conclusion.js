@@ -8,7 +8,7 @@ function conclusion({ postId }) {
       <Menu slug={postId} index={"conclusion"} />
     }
     appContent={
-      <Conclusion />
+      <Conclusion slug={postId}/>
     }
   />
 }

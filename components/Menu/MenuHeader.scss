@@ -1,0 +1,52 @@
+.MenuHeader {
+  position: fixed;
+  height: 60px;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background: #ffffff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+
+  &.center {
+    justify-content: unset;
+  }
+}
+
+.MenuHeader__scb-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  img {
+    width: 100px;
+    height: 50px;
+  }
+  &.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.MenuHeader__sidebar-container {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  opacity: 1;
+  left: -100%;
+  .MenuHeader__sidebar-container--background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: rgba(67, 67, 67, 0.5);
+    transition-delay: 0.1s;
+    transition-duration: 0.3s;
+  }
+}

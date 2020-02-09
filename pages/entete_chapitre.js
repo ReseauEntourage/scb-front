@@ -3,7 +3,6 @@ import React from 'react';
 
 
 class Index extends React.Component {
-
   static getInitialProps ({ query: { id, chapitre } }) {
     return { postId: id, postChapitre: chapitre };
   }

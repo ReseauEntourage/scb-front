@@ -1,11 +1,15 @@
 import Card from "./Card";
-import { useQuery } from 'react-apollo';
+import { useQuery } from '@apollo/react-hooks';
 import { GET_PARCOURS } from "../../graphql/querries";
 
 const Cards = () => {
-  const { data } = useQuery(GET_PARCOURS);
+  const { loading, data } = useQuery(GET_PARCOURS);
 
-  const parcours = data.parcours.map((parcour, key) => {
+  if (loading) {
+    return <div></div>;
+  }
+
+  const parcours = data.parcours.map((parcour, key) =>
     <Card
       title={parcour.Titre}
       color_1={parcour.couleur}
@@ -15,11 +19,9 @@ const Cards = () => {
       img={parcour.card_personnage.url}
       key={key}
     />
-  });
-
-  return (
-    <div className="cards-container">{parcours}</div>
   );
+
+  return <div className="cards-container">{parcours}</div>;
 };
 
 export default Cards;

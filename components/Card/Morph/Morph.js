@@ -1,5 +1,5 @@
-import React from "react";
 import "./Morph.scss";
+
 const Morph = props => {
   return (
     <svg

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState, useRef } from "react";
 import "./Answer.scss";
 
 const Answer = ({ text, color, onTitleChange }) => {
   const [active] = useState("not-active");
-  const answer = React.useRef(null);
+  const answer = useRef(null);
 
   return (
     <div

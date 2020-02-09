@@ -1,4 +1,3 @@
-import React from "react";
 import "./SCBCharacter.scss";
 
 const SCBCharacter = ({
