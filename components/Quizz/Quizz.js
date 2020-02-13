@@ -9,7 +9,7 @@ import QuizzButton from './QuizzButton';
 
 const Quizz = ({ slug, number, items }) => {
   const { loading, data } = useQuery(GET_QUIZZ, {
-    variables: { slug, number }
+    variables: { slug, order: number }
   });
 
   if (loading) {

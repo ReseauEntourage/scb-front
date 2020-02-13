@@ -1,15 +1,13 @@
-import Explanation from '../components/Quizz/Explanation/Explanation';
+import About from '../components/About/About';
 
-const about = ({ postId, postNumber, postValue }) => {
-  return <div className='container-fluid'>
-    <Explanation
-      slug={postId}
-      number={postNumber}
-      value={postValue}
-    />
-  </div>;
+const about = ({ postId, postOrder, postValue }) => {
+  return <AppShell
+    appContent={
+      <About slug={postId} order={postOrder} value={postValue} />
+    }
+  />;
 }
 
-about.getInitialProps = ({ query: { id, number, value } }) => ({ postId: id, postNumber: number, postValue: value });
+about.getInitialProps = ({ query: { id, number, value } }) => ({ postId: id, postOrder: number, postValue: value });
 
 export default about;
