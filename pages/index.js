@@ -1,20 +1,11 @@
-/* /pages/index.js */
-
 import Entete from '../components/Entete/Entete';
-import React from 'react';
 
-class Index extends React.Component {
-  static getInitialProps({ query: { id } }) {
-    return { postId: id };
-  }
-
-  render() {
-    return (
-      <div className='container-fluid'>
-        <Entete id={this.props.postId} enumeration={'Intro'}></Entete>
-      </div>
-    )
-  }
+const index = ({ postId }) => {
+  return <div className='container-fluid'>
+    <Entete id={postId} enumeration={'Intro'}></Entete>
+  </div>
 }
 
-export default Index;
+index.getInitialProps = ({ query: { id } }) => ({ postId: id });
+
+export default index;

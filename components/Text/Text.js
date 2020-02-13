@@ -1,44 +1,27 @@
-import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_TEXT } from '../graphql/querries';
-/* /pages/index.js */
 
-class Cards extends React.Component {
+const subStringData = (text) => {
+  if (text.paragraphe.includes("\n")) {
+    const res = text.paragraphe.split("\n");
 
-  constructor(props) {
-    super(props);
+    return res;
+  }
+  return text;
+};
 
-    this.state = {
-      paragraphes: []
-    };
+const Text = () => {
+  const { loading, data } = useQuery(GET_TEXT);
+
+  if (loading) {
+    return <div></div>;
   }
 
-  subStringData = (text) => {
-    if (text.paragraphe.includes("\n")) {
-      const res = text.paragraphe.split("\n");
+  const paragraphes = data.parcour.textes
+    .map(text => subStringData(text))
+    .map(paragraphe => <p className="tex"> {paragraphe} </p>);
 
-      return res;
-    }
-    return text;
-  }
-
-  render() {  
-    const { loading, data } = useQuery(GET_TEXT);
-
-    if (loading) {
-      return <div></div>;
-    }
-
-    data.parcour.textes.map(text => {
-      this.state.paragraphes = this.subStringData(text);
-    });
-
-    return <div className="texxt">
-      {this.state.paragraphes.map(paragraphe => (
-        <p className="tex"> {paragraphe} </p>
-      ))}
-    </div>;
-  }
+  return <div className="texxt">{paragraphes}</div>;
 }
 
-export default Cards;
+export default Text;
