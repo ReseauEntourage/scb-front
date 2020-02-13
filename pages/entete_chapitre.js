@@ -1,9 +1,11 @@
 import EnteteChapitre from '../components/EnteteChapitre/EnteteChapitre';
 
 const entete_chapitre = ({ postId, postChapitre }) => {
-  return <div className="container-fluid">
-    <EnteteChapitre id={postId} enumeration={postChapitre}></EnteteChapitre>
-  </div>
+  return <AppShell
+    appContent={
+      <EnteteChapitre id={postId} enumeration={postChapitre} />
+    }
+  />;
 }
 
 entete_chapitre.getInitialProps = ({ query: { id, chapitre } }) => ({ postId: id, postChapitre: chapitre });

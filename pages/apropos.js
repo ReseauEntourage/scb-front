@@ -3,7 +3,7 @@ import APropos from '../components/APropos/APropos';
 import Menu from '../components/Menu/Menu';
 
 function apropos() {
-  return <AppShell 
+  return <AppShell
     appHeader={
       <Menu slug={null} />
     }

@@ -227,11 +227,11 @@ const COUNT_QUIZZES = gql`
 `
 
 const GET_QUIZZ = gql`
-  query GET_QUIZZ($slug: String!, $number: String!) {
+  query GET_QUIZZ($slug: String!, $order: String!) {
     parcours(where: { url_slug: $slug }) {
       Titre
       couleur
-      quizzes(where: { ordre: $number }) {
+      quizzes(where: { ordre: $order }) {
         titre
         chapitre
         reponse_un

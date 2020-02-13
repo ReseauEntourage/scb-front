@@ -1,9 +1,11 @@
-import Entete from '../components/Entete/Entete';
+import Index from '../components/Index/Index';
 
 const index = ({ postId }) => {
-  return <div className='container-fluid'>
-    <Entete id={postId} enumeration={'Intro'}></Entete>
-  </div>
+  return <AppShell
+    appContent={
+      <Index id={postId} enumeration={'Intro'} />
+    }
+  />;
 }
 
 index.getInitialProps = ({ query: { id } }) => ({ postId: id });

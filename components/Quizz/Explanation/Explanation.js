@@ -1,10 +1,10 @@
 import './Explanation.scss';
 import { useQuery } from '@apollo/react-hooks';
-import { GET_QUIZZ } from '../.../graphql/querries';
+import { GET_QUIZZ } from '../../../graphql/querries';
 
 import Button from '../../Button/Button';
-import validate from '../.../static/images/validate.svg';
-import refuse from '../.../static/images/refuse.svg';
+import validate from '../../../static/images/validate.svg';
+import refuse from '../../../static/images/refuse.svg';
 
 const dynamicSort = property => {
   let sortOrder = 1;
@@ -33,9 +33,9 @@ const getArrayofLink = data => {
   return arr;
 }
 
-const Explanation = ({ data, slug, order, chapitre, value }) => {
+const Explanation = ({ slug, order, chapitre, value }) => {
   const { loading, data } = useQuery(GET_QUIZZ, {
-    variables: { slug, number }
+    variables: { slug, order }
   });
 
   if (loading) {
@@ -43,7 +43,6 @@ const Explanation = ({ data, slug, order, chapitre, value }) => {
   }
 
   let items = getArrayofLink(data);
-  let number = order;
 
   return <div>
     {data.parcours.map((parcour, key) =>
