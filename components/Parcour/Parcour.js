@@ -8,11 +8,11 @@ import SCBCharacter from '../SCBCharacter/SCBCharacter';
 import backbtn from '../../static/images/back.svg';
 import clock from '../../static/images/clock.svg';
 
-const Parcour = ({ id }) => {
+const Parcour = ({ slug }) => {
   const enumeration = 'Intro';
   const { loading, data } = useQuery(QUERY_GQL, {
     variables: { 
-      whereSlug: { url_slug: id },
+      whereSlug: { url_slug: slug },
       whereChapitre: { chapitre: enumeration }
     }
   });

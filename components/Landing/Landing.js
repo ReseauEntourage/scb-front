@@ -1,8 +1,7 @@
 import './Landing.scss';
 import { useEffect, useState } from 'react';
 
-import Cards from '../Card/Cards';
-import Footer from '../Footer/Footer';
+import Cards from '../Cards/Cards';
 
 import landing1 from '../../static/images/landing.png';
 import landing from '../../static/images/landing.png';
@@ -67,8 +66,6 @@ const Landing = () => {
       <h2 className="home__parcours--title">Découvrir les parcours</h2>
       <Cards />
     </div>
-
-    <Footer />
   </div>;
 }
 

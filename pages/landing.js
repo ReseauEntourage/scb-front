@@ -1,4 +1,5 @@
 import AppShell from '../components/AppShell/AppShell';
+import Footer from '../components/Footer/Footer';
 import Landing from '../components/Landing/Landing';
 import Menu from '../components/Menu/Menu';
 
@@ -10,7 +11,10 @@ function landing() {
     appContent={
       <Landing />
     }
-  />
+    appFooter={
+      <Footer />
+    }
+  />;
 }
 
 export default landing;

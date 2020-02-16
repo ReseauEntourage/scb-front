@@ -2,8 +2,7 @@ import './Defis.scss';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_ALL_DEFIS } from '../../graphql/querries';
 
-import DefiCard from '../Defi/DefiCard';
-import Footer from '../Footer/Footer';
+import DefiCard from '../Defis/DefiCard';
 
 const Defis = () => {
   const { loading, data } = useQuery(GET_ALL_DEFIS);
@@ -26,7 +25,6 @@ const Defis = () => {
         <h2 className="defis-container-title_h2">Découvrez de nouveaux défis</h2>
         {defis}
       </div>
-      <Footer />
     </div>
   );
 }

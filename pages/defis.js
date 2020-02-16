@@ -1,5 +1,6 @@
 import AppShell from '../components/AppShell/AppShell';
 import Defis from '../components/Defis/Defis';
+import Footer from '../components/Footer/Footer';
 import Menu from '../components/Menu/Menu';
 
 import { withRouter } from 'next/router';
@@ -12,7 +13,10 @@ function defis() {
     appContent={
       <Defis />
     }
-  />
+    appFooter={
+      <Footer />
+    }
+  />;
 }
 
 export default withRouter(defis);

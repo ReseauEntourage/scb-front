@@ -1,13 +1,16 @@
 import './AppShell.scss';
 
-function AppShell(props) {
+function AppShell({ appHeader, appContent, appFooter }) {
   return (
     <div className="app-shell">
       <div className="app-shell__header">
-        {props.appHeader}
+        {appHeader}
       </div>
       <div className="app-shell__content">
-        {props.appContent}
+        {appContent}
+      </div>
+      <div className="app-shell__footer">
+        {appFooter}
       </div>
     </div>
   );

@@ -17,12 +17,12 @@ app.prepare().then(() => {
     return app.render(req, res, '/parcours', req.query)
   })
 
-  server.get('/parcours/:id', (req, res) => {
-    return app.render(req, res, '/parcour', { id: req.params.id })
+  server.get('/parcours/:slug', (req, res) => {
+    return app.render(req, res, '/parcour', { slug: req.params.slug })
   })
 
-  server.get('/parcours/:id/introduction', (req, res) => {
-    return app.render(req, res, '/parcour', { id: req.params.id })
+  server.get('/parcours/:slug/introduction', (req, res) => {
+    return app.render(req, res, '/parcour', { slug: req.params.slug })
   })
 
   server.get('/parcours/:id/:chapitre/0', (req, res) => {

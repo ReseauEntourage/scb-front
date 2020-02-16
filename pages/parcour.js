@@ -1,14 +1,14 @@
 import AppShell from '../components/AppShell/AppShell';
 import Parcour from '../components/Parcour/Parcour';
 
-function parcour ({ postId }) {
+function parcour ({ slug }) {
   return <AppShell
     appContent={
-      <Parcour id={postId} />
+      <Parcour slug={slug} />
     }
   />;
 }
 
-parcour.getInitialProps = ({ query: { id } }) => ({ postId: id });
+parcour.getInitialProps = ({ query: { slug } }) => ({ slug });
 
 export default parcour;
