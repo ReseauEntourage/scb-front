@@ -4,8 +4,8 @@ import Morph from "../Morph/Morph";
 
 const Card = ({ title, color_1, color_2, duration, link, img }) => {
   return <Link
-    href={`/parcours/?id=${link}/introduction`}
-    as={`/parcours/${link}/introduction`}
+    href={`/parcours/?id=${link}`}
+    as={`/parcours/${link}`}
   >
     <a>
       <div className="card-container" style={{ background: "#" + color_1 }}>

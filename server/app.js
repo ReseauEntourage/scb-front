@@ -21,14 +21,18 @@ app.prepare().then(() => {
     return app.render(req, res, '/parcour', { slug: req.params.slug })
   })
 
-  server.get('/parcours/:slug/introduction', (req, res) => {
-    return app.render(req, res, '/parcour', { slug: req.params.slug })
+  server.get('/parcours/:slug/:chapitre', (req, res) => {
+    return app.render(req, res, '/parcour-chapitre', {
+      slug: req.params.slug,
+      chapitre: req.params.chapitre
+    })
   })
 
-  server.get('/parcours/:id/:chapitre/0', (req, res) => {
-    return app.render(req, res, '/entete_chapitre', {
+  server.get('/parcours/:id/:chapitre/:order', (req, res) => {
+    return app.render(req, res, '/slide', {
       id: req.params.id,
-      chapitre: req.params.chapitre
+      chapitre: req.params.chapitre,
+      order: req.params.order
     })
   })
 
@@ -61,14 +65,6 @@ app.prepare().then(() => {
 
   server.get('/parcours/:id/conclusion', (req, res) => {
     return app.render(req, res, '/conclusion', { id: req.params.id })
-  })
-
-  server.get('/parcours/:id/:chapitre/:order', (req, res) => {
-    return app.render(req, res, '/slide', {
-      id: req.params.id,
-      chapitre: req.params.chapitre,
-      order: req.params.order
-    })
   })
 
   server.get('/defis', (req, res) => {

@@ -19,7 +19,7 @@ const Button = ({ title, color, slug, order, param, chapitre, next }) => {
   } else if (!next) {
     href = `/parcours/${slug}/${nextChapitre}/${nextLink}`;
   } else {
-    href = `/parcours/${slug}/${nextChapitre}/0`;
+    href = `/parcours/${slug}/${nextChapitre}`;
   }
 
   return <div className="btn-container">

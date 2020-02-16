@@ -59,7 +59,6 @@ const Parcour = ({ slug }) => {
       </div>
 
       <EnteteButton
-        className="Parcour__button"
         title={"commencer"}
         color={parcour.couleur}
         slug={parcour.url_slug}
