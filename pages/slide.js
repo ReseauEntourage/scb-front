@@ -10,7 +10,7 @@ function slide({ postId, postChapitre, postOrder }) {
     appContent={
       <Slide id={postId} order={postOrder} chapitre={postChapitre} />
     }
-  />
+  />;
 }
 
 slide.getInitialProps = ({ query: { id, chapitre, order } }) => ({

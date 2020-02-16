@@ -1,9 +1,9 @@
 
 import { useQuery } from '@apollo/react-hooks';
 import { GET_CUSTOM, GET_ORDER } from '../../graphql/querries';
-import Video from '../Video/Video';
-import Texte from '../Texte/Texte';
-import Quote from '../Quote/Quote';
+import Video from './Video/Video';
+import Texte from './Texte/Texte';
+import Quote from './Quote/Quote';
 import Quizz from '../Quizz/Quizz';
 
 const dynamicSort = property => {
@@ -83,7 +83,7 @@ const Slide = ({ id, order, chapitre }) => {
               slug={parcour.url_slug}
               key={key}
               character={parcour.personnage.url}
-              character_name={parcour.character_name}
+              characterName={parcour.character_name}
               items={items}
               chapitre={chapitre}
             />

@@ -10,7 +10,7 @@ function conclusion({ postId }) {
     appContent={
       <Conclusion slug={postId}/>
     }
-  />
+  />;
 }
 
 conclusion.getInitialProps = ({ query: { id } }) => ({ postId: id });

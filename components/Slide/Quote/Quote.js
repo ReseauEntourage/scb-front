@@ -1,13 +1,22 @@
-import './Texte.scss';
+import './Quote.scss';
 import { useQuery } from '@apollo/react-hooks';
-import { GET_TEXTE_INFO } from '../../graphql/querries';
+import { GET_QUOTE_INFO } from '../../../graphql/querries';
 
-import Button from '../Button/Button';
-
+import Button from '../../Button/Button';
+import SCBCharacter from '../SCBCharacter/SCBCharacter';
 import { Markdown } from 'react-showdown';
 
-const Texte = ({ color, order, slug, items, chapitre }) => {
-  const { loading, data } = useQuery(GET_TEXTE_INFO, {
+const Quote = ({
+  quote,
+  color,
+  order,
+  slug,
+  character,
+  characterName,
+  items,
+  chapitre
+}) => {
+  const { loading, data } = useQuery(GET_QUOTE_INFO, {
     variables: { slug, order, chapitre }
   });
 
@@ -17,25 +26,33 @@ const Texte = ({ color, order, slug, items, chapitre }) => {
 
   return <div className="video-container">
     {data.parcours.map((parcour, key) =>
-      parcour.textes.map(text => (
+      quote.map((text, key) => (
         <div className="video-content" key={key}>
           <div className="video__video-subtitle">
-            <h2>{chapitre}</h2>
+            <h2> {chapitre} </h2>
           </div>
           <div className="video__video-name">
-            <h1>{text.titre}</h1>
+            <h1> {text.titre} </h1>
           </div>
           <div className="video__video-text-container">
             <Markdown markup={text.paragraphe} />
           </div>
-          {items[items.length] &&
-          items[items.length].ordre !== order ? (
+          <SCBCharacter
+            image={character}
+            characterName={characterName}
+            characterTexte={text.character_quote}
+            color={color}
+            param={"quote"}
+          />
+
+          {items.pop().ordre !== order ? (
             <Button
               title={"continuer"}
               link={"/parcours/"}
               order={order}
               color={color}
               slug={slug}
+              param={"quote"}
               chapitre={chapitre}
               next={false}
             />
@@ -46,6 +63,7 @@ const Texte = ({ color, order, slug, items, chapitre }) => {
               order={order}
               color={color}
               slug={slug}
+              param={"quote"}
               chapitre={chapitre}
               next={true}
             />
@@ -56,4 +74,4 @@ const Texte = ({ color, order, slug, items, chapitre }) => {
   </div>;
 };
 
-export default Texte;
+export default Quote;

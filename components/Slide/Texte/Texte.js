@@ -1,22 +1,13 @@
-import './Quote.scss';
+import './Texte.scss';
 import { useQuery } from '@apollo/react-hooks';
-import { GET_QUOTE_INFO } from '../../graphql/querries';
+import { GET_TEXTE_INFO } from '../../../graphql/querries';
 
-import Button from '../Button/Button';
-import SCBCharacter from '../SCBCharacter/SCBCharacter';
+import Button from '../../Button/Button';
+
 import { Markdown } from 'react-showdown';
 
-const Quote = ({
-  quote,
-  color,
-  order,
-  slug,
-  character,
-  character_name,
-  items,
-  chapitre
-}) => {
-  const { loading, data } = useQuery(GET_QUOTE_INFO, {
+const Texte = ({ color, order, slug, items, chapitre }) => {
+  const { loading, data } = useQuery(GET_TEXTE_INFO, {
     variables: { slug, order, chapitre }
   });
 
@@ -26,33 +17,25 @@ const Quote = ({
 
   return <div className="video-container">
     {data.parcours.map((parcour, key) =>
-      quote.map((text, key) => (
+      parcour.textes.map(text => (
         <div className="video-content" key={key}>
           <div className="video__video-subtitle">
-            <h2> {chapitre} </h2>
+            <h2>{chapitre}</h2>
           </div>
           <div className="video__video-name">
-            <h1> {text.titre} </h1>
+            <h1>{text.titre}</h1>
           </div>
           <div className="video__video-text-container">
             <Markdown markup={text.paragraphe} />
           </div>
-          <SCBCharacter
-            image={character}
-            character_name={character_name}
-            character_texte={text.character_quote}
-            color={color}
-            param={"quote"}
-          />
-
-          {items.pop().ordre !== order ? (
+          {items[items.length] &&
+          items[items.length].ordre !== order ? (
             <Button
               title={"continuer"}
               link={"/parcours/"}
               order={order}
               color={color}
               slug={slug}
-              param={"quote"}
               chapitre={chapitre}
               next={false}
             />
@@ -63,7 +46,6 @@ const Quote = ({
               order={order}
               color={color}
               slug={slug}
-              param={"quote"}
               chapitre={chapitre}
               next={true}
             />
@@ -74,4 +56,4 @@ const Quote = ({
   </div>;
 };
 
-export default Quote;
+export default Texte;

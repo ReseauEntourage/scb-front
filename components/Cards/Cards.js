@@ -1,6 +1,6 @@
-import Card from "./Card";
 import { useQuery } from '@apollo/react-hooks';
 import { GET_PARCOURS } from "../../graphql/querries";
+import Card from "./Card/Card";
 
 const Cards = () => {
   const { loading, data } = useQuery(GET_PARCOURS);

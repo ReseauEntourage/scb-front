@@ -4,7 +4,7 @@ import { Markdown } from 'react-showdown';
 
 import ReactPlayer from 'react-player';
 
-import Button from '../Button/Button';
+import Button from '../../Button/Button';
 
 const subStringData = text => {
   const res = text.split("\n");

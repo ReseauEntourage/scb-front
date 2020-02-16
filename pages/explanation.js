@@ -1,6 +1,7 @@
-import Explanation from '../components/Quizz/Explanation/Explanation';
+import AppShell from '../components/AppShell/AppShell';
+import Explanation from '../components/Explanation/Explanation';
 
-const explanation = ({ postId, postChapitre, postOrder, postValue }) => {
+function explanation ({ postId, postChapitre, postOrder, postValue }) {
   return <AppShell
     appContent={
       <Explanation

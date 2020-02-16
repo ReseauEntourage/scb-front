@@ -1,6 +1,7 @@
+import AppShell from '../components/AppShell/AppShell';
 import EnteteChapitre from '../components/EnteteChapitre/EnteteChapitre';
 
-const entete_chapitre = ({ postId, postChapitre }) => {
+function entete_chapitre ({ postId, postChapitre }) {
   return <AppShell
     appContent={
       <EnteteChapitre id={postId} enumeration={postChapitre} />

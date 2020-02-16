@@ -3,9 +3,7 @@ import { useState } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_QUIZZ } from '../../graphql/querries';
 
-import './Answer.scss';
-import './QuizzButton.scss';
-import QuizzButton from './QuizzButton';
+import QuizzButton from './QuizzButton/QuizzButton';
 
 const Quizz = ({ slug, number, items }) => {
   const { loading, data } = useQuery(GET_QUIZZ, {

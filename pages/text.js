@@ -10,7 +10,7 @@ function text() {
     appContent={
       <Text />
     }
-  />
+  />;
 }
 
 export default text;

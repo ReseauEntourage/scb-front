@@ -10,7 +10,7 @@ function defi({ postId }) {
     appContent={
       <Defi id={postId}/>
     }
-  />
+  />;
 }
 
 defi.getInitialProps = ({ query: { id } }) => ({ postId: id });

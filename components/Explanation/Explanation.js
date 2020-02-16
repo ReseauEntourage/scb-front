@@ -1,10 +1,10 @@
 import './Explanation.scss';
 import { useQuery } from '@apollo/react-hooks';
-import { GET_QUIZZ } from '../../../graphql/querries';
+import { GET_QUIZZ } from '../../graphql/querries';
 
-import Button from '../../Button/Button';
-import validate from '../../../static/images/validate.svg';
-import refuse from '../../../static/images/refuse.svg';
+import Button from '../Button/Button';
+import validate from '../../static/images/validate.svg';
+import refuse from '../../static/images/refuse.svg';
 
 const dynamicSort = property => {
   let sortOrder = 1;

@@ -10,7 +10,7 @@ function apropos() {
     appContent={
       <APropos />
     }
-  />
+  />;
 }
 
 export default apropos;

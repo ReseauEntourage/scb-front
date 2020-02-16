@@ -1,6 +1,6 @@
 import "./Card.scss";
 import Link from "next/link";
-import Morph from "./Morph/Morph";
+import Morph from "../Morph/Morph";
 
 const Card = ({ title, color_1, color_2, duration, link, img }) => {
   return <Link

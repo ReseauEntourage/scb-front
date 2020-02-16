@@ -1,4 +1,4 @@
-import Explanation from '../Quizz/Explanation/Explanation';
+import Explanation from '../Explanation/Explanation';
 
 function About({ postId, postOrder, postValue }) {
   return <Explanation slug={postId} order={postOrder} value={postValue} />;
