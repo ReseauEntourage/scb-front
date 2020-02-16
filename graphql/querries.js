@@ -244,17 +244,6 @@ const GET_QUIZZ = gql`
   }
 `
 
-const GET_QUIZZ_EXPLANATION = gql`
-  query GET_QUIZZ($slug: String!, $number: String!) {
-    parcours(where: { url_slug: $slug }) {
-      id
-      quizzes(limit: 1, where: { ordre: $number }) {
-        explication
-      }
-    }
-  }
-`
-
 const GET_CONCLUSION_INFO = gql`
   query GetConclusionInfo($slug: String!) {
     parcours(where: { url_slug: $slug }) {
@@ -313,7 +302,6 @@ export {
   GET_QUIZZ,
   GET_CONCLUSION_INFO,
   COUNT_QUIZZES,
-  GET_QUIZZ_EXPLANATION,
   GET_DEFI,
   GET_ALL_DEFIS
 }

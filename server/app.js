@@ -13,8 +13,16 @@ app.prepare().then(() => {
     return app.render(req, res, '/landing', req.query)
   })
 
+  server.get('/parcours', (req, res) => {
+    return app.render(req, res, '/parcours', req.query)
+  })
+
   server.get('/parcours/:id', (req, res) => {
-    return app.render(req, res, '/index', { id: req.params.id })
+    return app.render(req, res, '/parcour', { id: req.params.id })
+  })
+
+  server.get('/parcours/:id/introduction', (req, res) => {
+    return app.render(req, res, '/parcour', { id: req.params.id })
   })
 
   server.get('/parcours/:id/:chapitre/0', (req, res) => {
@@ -22,10 +30,6 @@ app.prepare().then(() => {
       id: req.params.id,
       chapitre: req.params.chapitre
     })
-  })
-
-  server.get('/parcours/:id/introduction', (req, res) => {
-    return app.render(req, res, '/index', { id: req.params.id })
   })
 
   server.get('/parcours/:id/quizz/:number', (req, res) => {
@@ -77,10 +81,6 @@ app.prepare().then(() => {
 
   server.get('/text', (req, res) => {
     return app.render(req, res, '/text', req.query)
-  })
-
-  server.get('/parcours', (req, res) => {
-    return app.render(req, res, '/parcours', req.query)
   })
 
   server.get('/a-propos', (req, res) => {

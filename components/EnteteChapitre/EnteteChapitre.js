@@ -2,7 +2,7 @@ import "./EnteteChapitre.scss";
 import { useState, useEffect } from "react";
 import { useQuery } from '@apollo/react-hooks';
 import { GET_ENTETE_PER_SLUG } from "../../graphql/querries";
-import EnteteButton from "../Entete/Button/EnteteButton";
+import EnteteButton from "../EnteteButton/EnteteButton";
 import BackgroundImage from "../BackgroundImage/BackgroundImage";
 
 import comprendre_img from "../../static/images/comprendre_landing.png";
@@ -11,7 +11,7 @@ import agir_img from "../../static/images/agir_chapitre.png";
 
 const renderParcourBackgroundImage = parcour => {
   return parcour.background_mobile && parcour.background_desktop
-    ? <BackgroundImage img={parcour.background_mobile.url} desktop_img={parcour.background_desktop.url} />
+    ? <BackgroundImage mobile_img={parcour.background_mobile.url} desktop_img={parcour.background_desktop.url} />
     : "";
 }
 

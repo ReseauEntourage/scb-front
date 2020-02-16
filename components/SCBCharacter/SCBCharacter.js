@@ -2,25 +2,20 @@ import "./SCBCharacter.scss";
 
 const SCBCharacter = ({
   image,
-  character_name,
-  character_texte,
+  characterName,
+  characterTexte,
   color,
-  param
 }) => {
   return (
-    <div
-      className={`character-container ${
-        param === "entete" ? "entete" : "quote"
-      }`}
-    >
-      <div className="character__bubble">
-        <p> {character_texte}</p>
-        <span style={{ color: "#" + color }}>{character_name}</span>
+    <div className="Character">
+      <div className="Character__tooltip">
+        <span style={{ color: "#" + color }}>{characterName}</span>
+        <p>{characterTexte}</p>
       </div>
       <img
+        className="Character__image"
         src={`http://localhost:1337${image}`}
         alt="character image"
-        className="character__image"
       />
     </div>
   );

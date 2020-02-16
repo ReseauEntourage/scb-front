@@ -53,7 +53,7 @@ const Conclusion = ({ slug }) => {
           </div>
           {parcour.background_mobile ? (
             <BackgroundImage
-              img={parcour.background_mobile.url}
+              mobile_img={parcour.background_mobile.url}
               desktop_img={parcour.background_desktop.url}
             />
           ) : (
