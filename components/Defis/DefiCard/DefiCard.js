@@ -1,23 +1,29 @@
 import "./DefiCard.scss";
 import { withRouter } from "next/router";
 
-import arrow from "../../static/images/arrow-white.svg";
+import arrow from "../../../static/images/arrow-white.svg";
 const DefiCard = ({ parcours, defi }) => {
-  let color;
-  let titre;
-  parcours.map(parcour => {
-    color = parcour.couleur;
-    titre = parcour.Titre;
-  });
+  const titles = parcours.map(parcour => parcour.Titre).join(' — ');
+
+  const gradientColor = parcours
+    .map((parcour, index, items) => ({
+      color: `#${parcour.couleur}`,
+      start: Math.round(100 * index / items.length),
+      end: Math.round(100 * (index+1) / items.length)
+    }))
+    .map(gradientItem => `${gradientItem.color} ${gradientItem.start}%, ${gradientItem.color} ${gradientItem.end}%`)
+    .join(', ');
+
   return (
-    <a href={`/defi/${defi.id}`}>
-      <div className="defi-card-container" style={{ background: "#" + color }}>
-        <div className="defi-parcours">{titre} </div>
-        <div className="defi__title">{defi.titre} </div>
-        <img className="arrow__defi" src={arrow} />
+    <a className="DefiCard" href={`/defi/${defi.id}`}>
+      <div className="DefiCard-container" style={{ background: `linear-gradient(-45deg, ${gradientColor})` }}>
+        <div className="DefiCard-container-parcours">{titles}</div>
+        <div className="DefiCard-container-title">{defi.titre}</div>
+        <img className="DefiCard-container-arrow" src={arrow} />
       </div>
     </a>
   );
 };
 
 export default withRouter(DefiCard);
+

@@ -274,20 +274,6 @@ const GET_DEFI = gql`
   }
 `
 
-const GET_ALL_DEFIS = gql`
-  query getDefis {
-    defis {
-      id
-      titre
-      contenu
-      parcours {
-        Titre
-        couleur
-      }
-    }
-  }
-`
-
 export {
   GET_ENTETE_PER_ID,
   GET_ENTETE_PER_SLUG,
@@ -303,5 +289,4 @@ export {
   GET_CONCLUSION_INFO,
   COUNT_QUIZZES,
   GET_DEFI,
-  GET_ALL_DEFIS
 }
