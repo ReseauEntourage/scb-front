@@ -2,17 +2,17 @@ import AppShell from '../components/AppShell/AppShell';
 import Defi from '../components/Defi/Defi';
 import Menu from '../components/Menu/Menu';
 
-function defi({ postId }) {
+function defi({ id }) {
   return <AppShell 
     appHeader={
       <Menu slug={null} />
     }
     appContent={
-      <Defi id={postId}/>
+      <Defi id={id}/>
     }
   />;
 }
 
-defi.getInitialProps = ({ query: { id } }) => ({ postId: id });
+defi.getInitialProps = ({ query: { id } }) => ({ id });
 
 export default defi;
