@@ -1,24 +1,11 @@
 import AppShell from '../components/AppShell/AppShell';
-import Explanation from '../components/Explanation/Explanation';
+import Explanation from '../features/explanation';
 
-function explanation ({ postId, postChapitre, postOrder, postValue }) {
-  return <AppShell
-    appContent={
-      <Explanation
-        slug={postId}
-        order={postOrder}
-        chapitre={postChapitre}
-        value={postValue}
-      />
-    }
-  />;
+function explanation ({ slug, articleSlug, value }) {
+  const response = <Explanation slug={slug} articleSlug={articleSlug} value={value} />
+  return <AppShell appContent={response} />;
 }
 
-explanation.getInitialProps = ({ query: { id, chapitre, order, value } }) => ({ 
-  postId: id,
-  postChapitre: chapitre,
-  postOrder: order,
-  postValue: value
-});
+explanation.getInitialProps = ({ query: { slug, articleSlug, value } }) => ({ slug, articleSlug, value });
 
 export default explanation;

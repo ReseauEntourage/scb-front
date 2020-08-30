@@ -35,7 +35,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "dev": "node ./server/app.js",
+    "dev": "node ./schemaQuery.js && node ./server/app.js",
     "build": "next build",
     "start": "next start"
   },

@@ -1,0 +1,84 @@
+.landing {
+  display: flex;
+  flex-direction: column;
+  .landing__header { background: #626b7f; }
+  .landing__steps { background: #faf8f2; } 
+}
+
+
+.landing__header__background {
+  width: 100vw;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.landing__header article {
+  max-width: 728px;
+  margin: 0 auto;
+}
+
+
+.landing__steps ul {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  li {
+    flex: 1 0 320px;
+    margin-top: 50px;
+  }
+}
+.landing__steps li {
+  padding: 0 30px;
+  display: flex;
+  flex-direction: column;
+  img {
+    margin: 0 auto;
+  }
+}
+.landing__steps img {
+  height: 60px;
+}
+
+
+.landing__parcours article {
+  max-width: 728px;
+  margin: 0 auto;
+}
+
+
+.landing {
+  font-family: 'Lato';
+  text-align: center;
+}
+.landing__header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 130%;
+  color: #f9572d;
+}
+.landing__header p {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 150%;
+  color: white;
+}
+.landing__steps h2 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 130%;
+  color: #f9572d;
+}
+.landing__steps p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 150%;
+}
+.landing__parcours h2 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 130%;
+  color: #f9572d;
+}

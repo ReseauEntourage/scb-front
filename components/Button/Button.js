@@ -9,7 +9,7 @@ const getNextChapitre = (chapitre) => {
   }
 }
 
-const Button = ({ title, color, slug, order, param, chapitre, next }) => {
+const Button = ({ chapitre, color, next, order, param, slug }) => {
   const nextLink = parseInt(order) + 1;
   const nextChapitre = getNextChapitre(chapitre);
 
@@ -22,13 +22,18 @@ const Button = ({ title, color, slug, order, param, chapitre, next }) => {
     href = `/parcours/${slug}/${nextChapitre}`;
   }
 
-  return <div className="btn-container">
-    <a href={href}>
-      <div className={`button-container ${param === "quote" ? "quote" : ""}`} style={{ background: `#${color}` }}>
-        <span className="button-title">{title}</span>
-      </div>
-    </a>
-  </div>;
+  return (
+    <div className="btn-container">
+      <a href={href}>
+        <div
+          className={`button-container ${param === "quote" ? "quote" : ""}`}
+          style={{ background: `#${color}` }}
+        >
+          <span className="button-title">Continuer</span>
+        </div>
+      </a>
+    </div>
+  );
 }
 
 export default Button;

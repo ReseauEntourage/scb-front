@@ -153,15 +153,16 @@ const Menu = ({ slug, index, router }) => {
 
   let header;
   if (slug) {
-    const { loading, data } = useQuery(GET_MENU_INFO, {
-      variables: { slug }
-    });
+    // const { loading, data } = useQuery(GET_MENU_INFO, {
+    //   variables: { slug }
+    // });
 
-    if (loading) {
-      return <div></div>;
-    }
+    // if (loading) {
+    //   return <div></div>;
+    // }
 
-    header = renderHeaderWithParcours({ slug, index, router }, data, width);
+    // header = renderHeaderWithParcours({ slug, index, router }, data, width);
+    header = renderHeaderWithoutParcours(width);
   } else {
     header = renderHeaderWithoutParcours(width);
   }

@@ -1,5 +1,5 @@
 import AppShell from '../components/AppShell/AppShell';
-import Parcour from '../components/Parcour/Parcour';
+import Parcour from '../features/parcour';
 
 function parcour ({ slug }) {
   return <AppShell

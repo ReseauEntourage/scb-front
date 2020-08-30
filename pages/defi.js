@@ -1,5 +1,5 @@
 import AppShell from '../components/AppShell/AppShell';
-import Defi from '../components/Defi/Defi';
+import Defi from '../features/defi';
 import Menu from '../components/Menu/Menu';
 
 function defi({ id }) {

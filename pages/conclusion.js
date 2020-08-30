@@ -1,18 +1,13 @@
 import AppShell from '../components/AppShell/AppShell';
-import Conclusion from '../components/Conclusion/Conclusion';
+import Conclusion from '../features/conclusion';
 import Menu from '../components/Menu/Menu';
 
-function conclusion({ postId }) {
-  return <AppShell 
-    appHeader={
-      <Menu slug={postId} index={"conclusion"} />
-    }
-    appContent={
-      <Conclusion slug={postId}/>
-    }
-  />;
+function parcourConclusion({ slug }) {
+  const menu = <Menu slug={slug} index={"conclusion"} />;
+  const conclusion = <Conclusion slug={slug}/>;
+  return <AppShell appHeader={menu} appContent={conclusion} />;
 }
 
-conclusion.getInitialProps = ({ query: { id } }) => ({ postId: id });
+parcourConclusion.getInitialProps = ({ query: { slug } }) => ({ slug });
 
-export default conclusion;
+export default parcourConclusion;

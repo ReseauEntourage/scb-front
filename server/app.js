@@ -13,58 +13,8 @@ app.prepare().then(() => {
     return app.render(req, res, '/landing', req.query)
   })
 
-  server.get('/parcours', (req, res) => {
-    return app.render(req, res, '/parcours', req.query)
-  })
-
-  server.get('/parcours/:slug', (req, res) => {
-    return app.render(req, res, '/parcour', { slug: req.params.slug })
-  })
-
-  server.get('/parcours/:slug/:chapitre', (req, res) => {
-    return app.render(req, res, '/parcour-chapitre', {
-      slug: req.params.slug,
-      chapitre: req.params.chapitre
-    })
-  })
-
-  server.get('/parcours/:id/:chapitre/:order', (req, res) => {
-    return app.render(req, res, '/slide', {
-      id: req.params.id,
-      chapitre: req.params.chapitre,
-      order: req.params.order
-    })
-  })
-
-  server.get('/parcours/:id/quizz/:number', (req, res) => {
-    return app.render(req, res, '/quizz', {
-      id: req.params.id,
-      number: req.params.number
-    })
-  })
-
-  server.get('/parcours/:id/:chapitre/:order/reponse/:value', (req, res) => {
-    return app.render(req, res, '/explanation', {
-      id: req.params.id,
-      chapitre: req.params.chapitre,
-      order: req.params.order,
-      value: req.params.value
-    })
-  })
-
-  server.get(
-    '/parcours/:id/quizz/reponse/:validate/:explanation',
-    (req, res) => {
-      return app.render(req, res, '/about', {
-        id: req.params.id,
-        validate: req.params.validate,
-        explanation: req.params.explanation
-      })
-    }
-  )
-
-  server.get('/parcours/:id/conclusion', (req, res) => {
-    return app.render(req, res, '/conclusion', { id: req.params.id })
+  server.get('/a-propos', (req, res) => {
+    return app.render(req, res, '/a-propos', req.query)
   })
 
   server.get('/defis', (req, res) => {
@@ -75,12 +25,38 @@ app.prepare().then(() => {
     return app.render(req, res, '/defi', { id: req.params.id })
   })
 
-  server.get('/text', (req, res) => {
-    return app.render(req, res, '/text', req.query)
+  server.get('/parcours', (req, res) => {
+    return app.render(req, res, '/parcours', req.query)
   })
 
-  server.get('/a-propos', (req, res) => {
-    return app.render(req, res, '/apropos', req.query)
+  server.get('/parcours/:slug', (req, res) => {
+    return app.render(req, res, '/parcour', { slug: req.params.slug })
+  })
+
+  server.get('/parcours/:slug/conclusion', (req, res) => {
+    return app.render(req, res, '/conclusion', { slug: req.params.slug })
+  })
+
+  server.get('/parcours/:slug/:chapitreSlug', (req, res) => {
+    return app.render(req, res, '/chapitre', {
+      slug: req.params.slug,
+      chapitreSlug: req.params.chapitreSlug
+    })
+  })
+
+  server.get('/parcours/:slug/:chapitreSlug/:articleSlug', (req, res) => {
+    return app.render(req, res, '/article', {
+      slug: req.params.slug,
+      articleSlug: req.params.articleSlug
+    })
+  })
+
+  server.get('/parcours/:slug/:chapitreSlug/:articleSlug/reponse/:value', (req, res) => {
+    return app.render(req, res, '/explanation', {
+      slug: req.params.slug,
+      articleSlug: req.params.articleSlug,
+      value: req.params.value
+    })
   })
 
   server.get('*', (req, res) => {

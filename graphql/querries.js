@@ -59,16 +59,6 @@ const GET_PARCOURS = gql`
   }
 `
 
-const GET_TEXT = gql`
-  query GetCardData {
-    parcour(id: "1") {
-      textes {
-        paragraphe
-      }
-    }
-  }
-`
-
 const GET_CUSTOM = gql`
   query GetOrder($id: String!, $order: String!, $chapitre: String!) {
     parcours(where: { url_slug: $id }) {
@@ -102,44 +92,6 @@ const GET_CUSTOM = gql`
         ordre
         titre
         chapitre
-      }
-    }
-  }
-`
-
-const GET_ORDER = gql`
-  query GetOrder($id: String!, $chapitre: String!) {
-    parcours(where: { url_slug: $id }) {
-      Titre
-      couleur
-      url_slug
-      personnage {
-        url
-      }
-      textes(where: { chapitre: $chapitre }, sort: "ordre:asc") {
-        ordre
-        paragraphe
-        titre
-      }
-      videos(where: { chapitre: $chapitre }, sort: "ordre:asc") {
-        ordre
-        titre
-        Texte
-        url_video
-        ordre
-      }
-      quotes(where: { chapitre: $chapitre }, sort: "ordre:asc") {
-        ordre
-        titre
-        paragraphe
-        character_quote
-        chapitre
-      }
-      quizzes(where: { chapitre: $chapitre }, sort: "ordre:asc") {
-        id
-        ordre
-        chapitre
-        titre
       }
     }
   }
@@ -226,67 +178,14 @@ const COUNT_QUIZZES = gql`
   }
 `
 
-const GET_QUIZZ = gql`
-  query GET_QUIZZ($slug: String!, $order: String!) {
-    parcours(where: { url_slug: $slug }) {
-      Titre
-      couleur
-      quizzes(where: { ordre: $order }) {
-        titre
-        chapitre
-        reponse_un
-        reponse_deux
-        reponse_trois
-        bonne_reponse
-        explication
-      }
-    }
-  }
-`
-
-const GET_CONCLUSION_INFO = gql`
-  query GetConclusionInfo($slug: String!) {
-    parcours(where: { url_slug: $slug }) {
-      couleur
-      background_mobile {
-        url
-      }
-      background_desktop {
-        url
-      }
-      defis {
-        id
-        titre
-      }
-    }
-  }
-`
-
-const GET_DEFI = gql`
-  query getDefi($id: ID!) {
-    defi(id: $id) {
-      titre
-      contenu
-      parcours {
-        couleur
-      }
-    }
-  }
-`
-
 export {
   GET_ENTETE_PER_ID,
   GET_ENTETE_PER_SLUG,
   GET_PARCOURS,
-  GET_TEXT,
-  GET_ORDER,
   GET_MENU_INFO,
   GET_TEXTE_INFO,
   GET_QUOTE_INFO,
   GET_VIDEO_INFO,
   GET_CUSTOM,
-  GET_QUIZZ,
-  GET_CONCLUSION_INFO,
   COUNT_QUIZZES,
-  GET_DEFI,
 }

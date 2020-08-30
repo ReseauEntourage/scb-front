@@ -1,6 +1,6 @@
 import AppShell from '../components/AppShell/AppShell';
 import Footer from '../components/Footer/Footer';
-import Landing from '../components/Landing/Landing';
+import Landing from '../features/landing';
 import Menu from '../components/Menu/Menu';
 
 function landing() {
