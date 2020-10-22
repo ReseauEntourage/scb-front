@@ -1,5 +1,4 @@
 import './index.scss';
-import { getParcours } from '../../services';
 import ParcourCard from '../../components/ParcourCard/ParcourCard';
 import agir from '../../static/images/agir_landing.png';
 import changer from '../../static/images/changer_landing.png';
@@ -8,11 +7,8 @@ import landing from '../../static/images/landing.png';
 import wave from '../../static/images/wave.svg';
 import wave_2 from '../../static/images/wave_2.svg';
 
-const Landing = () => {
-  const data = getParcours();
-  if (!data) { return (<div>...</div>); }
-
-  const parcours = data.map((parcour, key) => <ParcourCard parcour={parcour} key={key} />);
+const Landing = ({ parcours }) => {
+  const parcourCards = parcours.map((parcour, key) => <ParcourCard parcour={parcour} key={key} />);
 
   return (
     <div className="landing">
@@ -50,7 +46,7 @@ const Landing = () => {
       <section className="landing__parcours">
         <img src={wave_2} style={{ width: "100%", height: "auto" }} />
         <h2>Découvrir les parcours</h2>
-        <article>{parcours}</article>
+        <article>{parcourCards}</article>
       </section>
     </div>
   );

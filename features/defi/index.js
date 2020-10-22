@@ -1,16 +1,10 @@
 import './index.scss';
 import { Markdown } from 'react-showdown';
 import Link from 'next/link';
-import { withRouter } from 'next/router';
-import { getDefi } from '../../services';
 import backbtn from '../../static/images/back.svg';
 
-const Defi = ({ id }) => {
-  const defi = getDefi(id);
-  if (!defi) { return (<div>...</div>); }
-
+const renderDefi = defi => {
   const parcours = defi.parcours;
-
   const gradientColor = parcours
     .map((parcour, index, items) => ({
       color: `#${parcour.color}`,
@@ -33,6 +27,10 @@ const Defi = ({ id }) => {
       <div className="defi__mardown"><Markdown markup={defi.content} /></div>
     </div>
   );
-};
+}
 
-export default withRouter(Defi);
+const renderEmptyDefi = () => <p>No Defi found</p>;
+
+const Defi = ({ defi }) => defi ? renderDefi(defi) : renderEmptyDefi();
+
+export default Defi;

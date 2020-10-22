@@ -3,14 +3,9 @@ import APropos from '../features/a-propos';
 import Menu from '../components/Menu/Menu';
 
 function Main() {
-  return <AppShell
-    appHeader={
-      <Menu slug={null} />
-    }
-    appContent={
-      <APropos />
-    }
-  />;
+  const menu = <Menu slug={null} />;
+  const apropos = <APropos />;
+  return <AppShell appHeader={menu} appContent={apropos} />;
 }
 
 export default Main;

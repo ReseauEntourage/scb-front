@@ -5,7 +5,9 @@ import { Markdown } from 'react-showdown';
 import ReactPlayer from 'react-player';
 
 const Video = ({ article }) => {
-  const video = article.content.pop();
+  const video = article.content[0];
+  console.log('Video article', article);
+  console.log('Video video', video);
 
   return (
     <div className="video-container">

@@ -1,5 +1,4 @@
 import "./DefiCard.scss";
-import { withRouter } from "next/router";
 
 import arrow from "../../static/images/arrow-white.svg";
 const DefiCard = ({ defi }) => {
@@ -16,7 +15,7 @@ const DefiCard = ({ defi }) => {
     .join(', ');
 
   return (
-    <a className="DefiCard" href={`/defi/${defi.id}`}>
+    <a className="DefiCard" href={`/defis/${defi.id}`}>
       <div className="DefiCard-container" style={{ background: `linear-gradient(-45deg, ${gradientColor})` }}>
         <div className="DefiCard-container-parcours">{titles}</div>
         <div className="DefiCard-container-title">{defi.title}</div>
@@ -26,5 +25,5 @@ const DefiCard = ({ defi }) => {
   );
 };
 
-export default withRouter(DefiCard);
+export default DefiCard;
 

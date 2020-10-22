@@ -15,12 +15,13 @@ class MyApp extends App {
             rel="stylesheet"
           />
         </Head>
-        <ApolloProvider client={apolloClient}>
+        {/* <ApolloProvider client={apolloClient}> */}
           <Component {...pageProps} />
-        </ApolloProvider>
+        {/* </ApolloProvider> */}
       </Container>
     )
   }
 }
 
-export default withApolloClient(MyApp);
+// export default withApolloClient(MyApp);
+export default MyApp;

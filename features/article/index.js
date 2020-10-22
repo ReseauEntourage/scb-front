@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { getArticle } from '../../services';
 import Video from './video';
 import Texte from './texte';
 import Quote from './quote';
@@ -11,6 +10,7 @@ const isQuoteType = article => article.type === 'quote';
 const isQuizzType = article => article.type === 'survey';
 
 const getNextLink = article => {
+  console.log('getNextLink article', article);
   if (isQuizzType(article)) {
     return `${article.chapitre.title_slug}/${article.title_slug}/reponse`;
   }
@@ -28,10 +28,7 @@ const getNextLink = article => {
   }
 }
 
-const Article = ({ slug, articleSlug }) => {
-  const article = getArticle(articleSlug);
-  if (!article) { return (<div>...</div>); }
-
+const renderArticle = (article, slug) => {
   const color = `#${article.chapitre.parcour.color}`;
   const href = `/parcours/${slug}/${getNextLink(article)}`;
 
@@ -55,6 +52,10 @@ const Article = ({ slug, articleSlug }) => {
       }
     </div>
   )
-}
+};
+
+const renderEmptyArticle = () => <p>No Article found</p>;
+
+const Article = ({ article, slug }) => article && slug ? renderArticle(article, slug) : renderEmptyArticle();
 
 export default Article;

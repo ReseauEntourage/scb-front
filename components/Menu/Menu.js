@@ -1,8 +1,5 @@
 import './Menu.scss';
 import { useState, useEffect } from 'react';
-import { useQuery } from '@apollo/react-hooks';
-import { GET_MENU_INFO } from '../../graphql/querries';
-import { withRouter } from 'next/router';
 import { TimelineLite } from 'gsap';
 
 import ListMenu from './ListMenu';
@@ -99,38 +96,38 @@ const initSlideIndex = (array, index, uri) => {
   }
 }
 
-const renderHeaderWithParcours = ({ slug, index, router }, data, width) => {
-  const slide = getArrayofLink(data.parcours);
-  const arr = Array.from(slide);
-  const current_slide = initSlideIndex(arr, index, router.query);
+// const renderHeaderWithParcours = ({ slug, index, router }, data, width) => {
+//   const slide = getArrayofLink(data.parcours);
+//   const arr = Array.from(slide);
+//   const current_slide = initSlideIndex(arr, index, router.query);
 
-  let nb_slide = 0
-  if (data.parcours) {
-    data.parcours.map((parcour, key) => {
-      nb_slide = parcour.textes.length + parcour.videos.length + parcour.quotes.length;
-      nb_slide += 3;
-    })
-  }
+//   let nb_slide = 0
+//   if (data.parcours) {
+//     data.parcours.map((parcour, key) => {
+//       nb_slide = parcour.textes.length + parcour.videos.length + parcour.quotes.length;
+//       nb_slide += 3;
+//     })
+//   }
 
-  return width < 992
-    ? <MenuHeader
-        openMenu={handleClickOpen}
-        closeMenu={handleClickClose}
-        indicator={
-          <div className="menu__slides-progress">
-            <div className="menu__progress-container" onClick={openMenuIntra}>
-              <span className="menu__progress-indicator"> {current_slide} | {nb_slide} </span>
-            </div>
-          </div>
-        }
-        parcours={
-          <div className="menu_sidebarleft_menu-container">
-            <ListMenu slug={slug} data={data} nb={nb_slide} handleCloseMenuIntro={closeMenuIntra}></ListMenu>
-          </div>
-        }
-      />
-    : <DesktopMenu />;
-};
+//   return width < 992
+//     ? <MenuHeader
+//         openMenu={handleClickOpen}
+//         closeMenu={handleClickClose}
+//         indicator={
+//           <div className="menu__slides-progress">
+//             <div className="menu__progress-container" onClick={openMenuIntra}>
+//               <span className="menu__progress-indicator"> {current_slide} | {nb_slide} </span>
+//             </div>
+//           </div>
+//         }
+//         parcours={
+//           <div className="menu_sidebarleft_menu-container">
+//             <ListMenu slug={slug} data={data} nb={nb_slide} handleCloseMenuIntro={closeMenuIntra}></ListMenu>
+//           </div>
+//         }
+//       />
+//     : <DesktopMenu />;
+// };
 
 const renderHeaderWithoutParcours = (width) => {
   return width < 992
@@ -141,7 +138,7 @@ const renderHeaderWithoutParcours = (width) => {
     : <DesktopMenu />;
 }
 
-const Menu = ({ slug, index, router }) => {
+const Menu = ({ slug, index }) => {
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
@@ -170,4 +167,4 @@ const Menu = ({ slug, index, router }) => {
   return <div>{header}</div>;
 }
 
-export default withRouter(Menu)
+export default Menu

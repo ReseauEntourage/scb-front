@@ -1,6 +1,5 @@
 import './index.scss';
 import Link from 'next/link';
-import { getArticle } from '../../services';
 import validate from '../../static/images/validate.svg';
 import refuse from '../../static/images/refuse.svg';
 
@@ -18,10 +17,7 @@ const getNextLink = article => {
   }
 }
 
-const Explanation = ({ slug, articleSlug, value }) => {
-  const article = getArticle(articleSlug);
-  if (!article) { return (<div>...</div>); }
-
+const renderExplanation = (slug, article, value) => {
   const quizz = article.content;
   const color = `#${article.chapitre.parcour.color}`;
   const href = `/parcours/${slug}/${getNextLink(article)}`;
@@ -37,6 +33,10 @@ const Explanation = ({ slug, articleSlug, value }) => {
       <Link href={href}><a className="EnteteButton" style={{ background: color }}>Continuer</a></Link>
     </div>
   );
-}
+};
+
+const renderEmptyExplanation = () => <p>No Explanation found</p>;
+
+const Explanation = ({ slug, article, value }) => slug && article && value ? renderExplanation(slug, article, value) : renderEmptyExplanation();
 
 export default Explanation;

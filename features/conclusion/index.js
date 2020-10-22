@@ -2,13 +2,8 @@ import './index.scss';
 import BackgroundImage from '../../components/BackgroundImage/BackgroundImage';
 import DefiCard from '../../components/DefiCard/DefiCard';
 import { MessengerIcon, WhatsappIcon } from '../../components/Icons/Icons';
-import { getParcour } from '../../services';
 
-const Conclusion = ({ slug }) => {
-  debugger;
-  const parcour = getParcour(slug);
-  if (!parcour) { return (<div>...</div>); }
-
+const Conclusion = ({ parcour }) => {
   const color = `#${parcour.color}`;
   const defis = parcour.defis.map((defi, key) => <DefiCard key={key} defi={defi} />);
 

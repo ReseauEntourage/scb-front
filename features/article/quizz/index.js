@@ -3,6 +3,8 @@ import ResponseCard from '../../../components/ResponseCard/ResponseCard';
 
 const Quizz = ({ article }) => {
   const quizz = article.content.pop();
+  console.log('Quizz article', article);
+  console.log('Quizz quizz', quizz);
 
   const responses = quizz.response.map((response, key) => <ResponseCard response={response} key={key} />);
 

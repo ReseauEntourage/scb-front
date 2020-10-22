@@ -1,20 +1,24 @@
 import './index.scss';
 import Link from 'next/link';
 import Router from 'next/router';
-import { getParcour } from '../../services';
 import BackgroundImage from '../../components/BackgroundImage/BackgroundImage';
 import Character from '../../components/Character/Character';
 import backbtn from '../../static/images/back.svg';
 import clock from '../../static/images/clock.svg';
 
-const Parcour = ({ slug }) => {
-  debugger;
-  const parcour = getParcour(slug);
-  if (!parcour) { return (<div>...</div>); }
+const getNextLink = parcour => {
+  const nextChapitre = parcour.chapitres[0];
+  
+  if (nextChapitre) {
+    return `${nextChapitre.title_slug}`;
+  } else {
+    return `conclusion`;
+  }
+}
 
+const renderParcour = parcour => {
   const color = `#${parcour.color}`;
-  const nextChapitre = parcour.chapitres.shift();
-  const href = `/parcours/${slug}/${nextChapitre.title_slug}`;
+  const href = `/parcours/${parcour.title_slug}/${getNextLink(parcour)}`;
   const character = parcour.character && <Character character={parcour.character} color={color} />;
 
   return (
@@ -33,5 +37,9 @@ const Parcour = ({ slug }) => {
     </div>
   );
 }
+
+const renderEmptyParcour = () => <p>No Parcour found</p>;
+
+const Parcour = ({ parcour }) => parcour ? renderParcour(parcour) : renderEmptyParcour();
 
 export default Parcour;
