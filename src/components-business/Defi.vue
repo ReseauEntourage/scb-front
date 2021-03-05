@@ -4,6 +4,7 @@ import { toRefs, PropType } from 'vue';
 import { Defi } from '@/api';
 
 import { useDefiColor } from '@/composables/useDefiColor';
+import { useDefiTitles } from '@/composables/useDefiTitles';
 
 interface Props {
   defi: Defi;
@@ -19,9 +20,11 @@ export default {
   setup(props: Props) {
     const { defi } = toRefs(props);
     const { defiColor } = useDefiColor(defi.value);
+    const { defiTitles } = useDefiTitles(defi.value);
 
     return {
       defiColor,
+      defiTitles,
     };
   },
 };
@@ -30,13 +33,12 @@ export default {
 <template>
   <div class="Defi">
     <header :style="{ '--defi-color': defiColor }">
-      <h2>{{ titles }}</h2>
+      <span>{{ defiTitles }}</span>
       <h1>{{ defi.title }}</h1>
     </header>
 
     <main>
       <vue3-markdown-it :source="defi.content" />
-      <p></p>
     </main>
   </div>
 </template>
@@ -59,23 +61,26 @@ main {
 </style>
 
 <style lang="scss" scoped>
-h1 {
-  font-size: 44px;
-  font-weight: 500;
-  text-align: center;
-  color: #FEFEFE;
-}
+.Defi {
+  --header-1-color: #ffffff;
+  --paragraph-color: #626262;
+  --span-color: #ffffff;
 
-h2 {
-  font-size: 18px;
-  font-weight: 400;
-  color: #FFFFFF;
-}
+  header {
+    text-align: center;
+  }
 
-p {
-  font-size: 30px;
-  font-weight: 500;
-  line-height: 170%;
-  color: #626262;
+  span {
+    text-transform: uppercase;
+  }
+}
+</style>
+
+<style lang="scss">
+main {
+  --header-1-color: #3d3d3d;
+  --header-2-color: #3d3d3d;
+  --header-2-color: #3d3d3d;
+  --paragraph-color: #3d3d3d;
 }
 </style>

@@ -1,15 +1,15 @@
 <script lang="ts">
 import { useRoute } from 'vue-router';
 
-import Menu from '@/components-layout/Menu.vue';
 import Parcour from '@/components-business/Parcour.vue';
+import Shell from '@/components-layout/Shell.vue';
 
 import { useParcour } from './composables/useParcour';
 
 export default {
   components: {
-    Menu,
     Parcour,
+    Shell,
   },
   setup() {
     const { params } = useRoute();
@@ -22,7 +22,8 @@ export default {
 </script>
 
 <template>
-  <Menu />
-  <Parcour v-if="parcour" :parcour="parcour" />
-  <template v-if="!parcour">Loading ...</template>
+  <Shell>
+    <Parcour v-if="parcour" :parcour="parcour" />
+    <template v-if="!parcour">Loading ...</template>
+  </Shell>
 </template>

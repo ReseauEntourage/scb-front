@@ -19,32 +19,22 @@ export default {
 </script>
 
 <template>
-  <div class="Parcours">
+  <section class="Parcours">
     <h1>Découvrir les parcours</h1>
-    <p>À travers des parcours thématiques, retrouvez des vidéos, des quiz et des témoignages pour aller vers les personnes sans-abri de votre quartier.</p>
+    <slot />
     <article>
       <template v-for="(parcour, index) in parcours" :key="index" >
         <ParcourCard :parcour="parcour" />
       </template>
     </article>
-  </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>
 .Parcours {
+  --header-1-color: #3d3d3d;
+  --paragraph-color: #626262;
   text-align: center;
-}
-h1 {
-  font-size: 44px;
-  font-weight: 500;
-  color: #3D3D3D;
-}
-
-p {
-  font-size: 30px;
-  font-weight: 500;
-  color: #626262;
-  line-height: 170%;
 }
 </style>
 

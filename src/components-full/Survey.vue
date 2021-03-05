@@ -12,9 +12,7 @@ interface Props {
 }
 
 export default {
-  components: {
-    ResponseInput,
-  },
+  components: { ResponseInput },
   props: {
     article: {
       type: Object as PropType<Article>,
@@ -43,69 +41,43 @@ export default {
 
 <template>
   <div class="Survey">
-    <div class="Survey-content">
-      <h2>{{ article.chapitre.title }}</h2>
-      <h1>{{ survey.question }}</h1>
-      <ResponseInput class="Survey-reponses" :parcour="parcour" :responses="survey.response" :response="selectedResponse" @update:response="selectedResponse = $event" />
-    </div>
+    <h2>{{ article.chapitre.title }}</h2>
+
+    <h1>{{ survey.question }}</h1>
+
+    <ResponseInput class="responses" :parcour="parcour" :responses="survey.response" :response="selectedResponse" @update:response="selectedResponse = $event" />
 
     <template v-if="selectedResponse">
-      <a v-if="selectedResponse.isAnwser" :href="`${href}/true`" :style="{ background: parcourColor }">Continuer</a>
-      <a v-if="!selectedResponse.isAnwser" :href="`${href}/false`" :style="{ background: parcourColor }">Continuer</a>
+      <a class="button" v-if="selectedResponse.isAnwser" :href="`${href}/true`" :style="{ background: parcourColor }">Continuer</a>
+      <a class="button" v-if="!selectedResponse.isAnwser" :href="`${href}/false`" :style="{ background: parcourColor }">Continuer</a>
     </template>
   </div>
 </template>
 
-<style lang="scss" scoped>.Survey { height: 100vh; }</style>
-
 <style lang="scss" scoped>
 .Survey {
-  position: relative;
   padding: 30px;
-
   display: flex;
   flex-direction: column;
-  .Survey-content {
-    flex: 1;
+  .responses {
     max-width: 768px;
-    margin: 0 auto;
+    margin: auto;
+  }
+  .button {
+    margin: auto auto 0;
   }
 }
 </style>
 
 <style lang="scss" scoped>
 .Survey {
+  --header-1-color: #3d3d3d;
+  --header-2-color: #c1c1c1;
+  --button-color: #fff;
   text-align: center;
-}
-h1 {
-  font-size: 24px;
-  font-weight: 500;
-  color: #3d3d3d;
-}
 
-h2 {
-  font-size: 16px;
-  font-weight: 400;
-  color: #c1c1c1;
-  text-transform: uppercase;
-}
-
-p {
-  font-weight: 600;
-  font-size: 16px;
-}
-
-a {
-  min-width: 345px;
-  margin: 0 auto;
-  padding: 10px;
-  border-radius: 5px;
-  text-align: center;
-  text-transform: uppercase;
-  color: #fff;
-
-  text-decoration: none;
-  &:active { color: inherit; }
-  &:focus { outline: none; }
+  h2 {
+    text-transform: uppercase;
+  }
 }
 </style>

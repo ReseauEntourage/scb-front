@@ -21,8 +21,8 @@ export default {
 <template>
   <div class="Defis">
     <h1>Passez à l'action</h1>
-    <p>Chacun, même d’un simple bonjour, peut agir contre la grande précarité. L’attention et l’estime que l’on témoigne à une personne sans-abri en discutant avec elle ont une grande valeur. Les riverains et les associations peuvent agir ensemble pour rendre leur quartier plus humain.</p>
-    <p><strong>Voici des défis pour vous aider à passer à l’action !</strong></p>
+    <h2>Chacun, même d’un simple bonjour, peut agir contre la grande précarité. L’attention et l’estime que l’on témoigne à une personne sans-abri en discutant avec elle ont une grande valeur. Les riverains et les associations peuvent agir ensemble pour rendre leur quartier plus humain.</h2>
+    <h2><strong>Voici des défis pour vous aider à passer à l’action !</strong></h2>
     <article>
       <template v-for="(defi, index) in defis" :key="index" >
         <DefiCard :defi="defi" />
@@ -41,18 +41,8 @@ export default {
 
 <style lang="scss" scoped>
 .Defis {
+  --header-1-color: #3d3d3d;
+  --header-2-color: #626262;
   text-align: center;
-}
-h1 {
-  font-size: 44px;
-  font-weight: 500;
-  color: #3D3D3D;
-}
-
-p {
-  font-size: 30px;
-  font-weight: 500;
-  color: #626262;
-  line-height: 170%;
 }
 </style>

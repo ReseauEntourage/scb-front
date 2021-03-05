@@ -1,19 +1,17 @@
 <script lang="ts">
-import Menu from '@/components-layout/Menu.vue';
-import Footer from '@/components-layout/Footer.vue';
 import APropos from '@/components-business/APropos.vue';
+import Shell from '@/components-layout/Shell.vue';
 
 export default {
   components: {
-    Menu,
-    Footer,
     APropos,
+    Shell,
   },
 };
 </script>
 
 <template>
-  <Menu />
-  <APropos />
-  <Footer />
+  <Shell>
+    <APropos />
+  </Shell>
 </template>

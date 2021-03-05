@@ -19,6 +19,7 @@ export interface Defi {
 export interface Parcour {
   title: string;
   title_slug: string;
+  description: string;
   color: string;
   duration: string;
   background_mobile: Image;

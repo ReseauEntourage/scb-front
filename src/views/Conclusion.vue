@@ -2,14 +2,14 @@
 import { useRoute } from 'vue-router';
 
 import Conclusion from '@/components-business/Conclusion.vue';
-import Menu from '@/components-layout/Menu.vue';
+import Shell from '@/components-layout/Shell.vue';
 
 import { useParcour } from './composables/useParcour';
 
 export default {
   components: {
     Conclusion,
-    Menu,
+    Shell,
   },
   setup() {
     const { params } = useRoute();
@@ -22,7 +22,8 @@ export default {
 </script>
 
 <template>
-  <Menu />
-  <Conclusion v-if="parcour" :parcour="parcour" />
-  <template v-if="!parcour">Loading ...</template>
+  <Shell>
+    <Conclusion v-if="parcour" :parcour="parcour" />
+    <template v-if="!parcour">Loading ...</template>
+  </Shell>
 </template>

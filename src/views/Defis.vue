@@ -1,15 +1,13 @@
 <script lang="ts">
-import Menu from '@/components-layout/Menu.vue';
-import Footer from '@/components-layout/Footer.vue';
 import Defis from '@/components-business/Defis.vue';
+import Shell from '@/components-layout/Shell.vue';
 
 import { useDefis } from './composables/useDefis';
 
 export default {
   components: {
-    Menu,
-    Footer,
     Defis,
+    Shell,
   },
   setup() {
     const { defis } = useDefis();
@@ -20,8 +18,8 @@ export default {
 </script>
 
 <template>
-  <Menu />
-  <Defis v-if="defis" :defis="defis" />
-  <template v-if="!defis">Loading ...</template>
-  <Footer />
+  <Shell>
+    <Defis v-if="defis" :defis="defis" />
+    <template v-if="!defis">Loading ...</template>
+  </Shell>
 </template>

@@ -37,68 +37,39 @@ export default {
 
 <template>
   <div class="Texte">
-    <div class="Texte-content">
-      <h2>{{ article.chapitre.title }}</h2>
-      <h1>{{ article.title }}</h1>
-      <vue3-markdown-it :source="texte.contentd" />
-      <p></p>
-    </div>
+    <h2>{{ article.chapitre.title }}</h2>
+    <h1>{{ article.title }}</h1>
 
-    <a :href="nextLink" :style="{ background: parcourColor }">Continuer</a>
+    <vue3-markdown-it :source="texte.contentd" />
+
+    <a class="button" :href="nextLink" :style="{ background: parcourColor }">Continuer</a>
   </div>
 </template>
 
-<style lang="scss" scoped>.Texte { min-height: 100vh; }</style>
-
 <style lang="scss" scoped>
 .Texte {
-  position: relative;
   padding: 30px;
-
   display: flex;
   flex-direction: column;
-  .Texte-content {
-    flex: 1;
-    max-width: 768px;
-    margin: 0 auto;
+  .button {
+    margin: auto auto 0;
   }
 }
 </style>
 
 <style lang="scss" scoped>
-.Texte h1,
-.Texte h2 {
-  text-align: center;
-}
-h1 {
-  font-size: 24px;
-  font-weight: 500;
-  color: #3d3d3d;
-}
+.Texte {
+  --header-1-color: #3d3d3d;
+  --header-2-color: #c1c1c1;
+  --button-color: #fff;
 
-h2 {
-  font-size: 16px;
-  font-weight: 400;
-  color: #c1c1c1;
-  text-transform: uppercase;
-}
+  h1,
+  h2 {
+    text-align: center;
+  }
 
-p {
-  font-weight: 600;
-  font-size: 16px;
-}
-
-a {
-  min-width: 345px;
-  margin: 0 auto;
-  padding: 10px;
-  border-radius: 5px;
-  text-align: center;
-  text-transform: uppercase;
-  color: #fff;
-
-  text-decoration: none;
-  &:active { color: inherit; }
-  &:focus { outline: none; }
+  h2 {
+    text-transform: uppercase;
+  }
 }
 </style>

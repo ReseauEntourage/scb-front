@@ -24,6 +24,8 @@ const GET_ARTICLE = `
           title_slug
           color,
           chapitres {order, title_slug}
+          background_mobile {url, provider}
+          background_desktop {url, provider}
         }
       }
     }

@@ -6,6 +6,7 @@ const GET_PARCOURS = `
     parcours {
       title
       title_slug
+      description
       color
       duration
       character {name, speech, avatar {url, provider}}
@@ -18,6 +19,7 @@ const GET_PARCOUR = `
     parcours (where: { title_slug: $slug }) {
       title
       title_slug
+      description
       color
       duration
       background_mobile {url, provider}

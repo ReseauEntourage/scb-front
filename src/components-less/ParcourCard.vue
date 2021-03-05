@@ -7,6 +7,7 @@ import { useRouter } from 'vue-router';
 import { useParcourColor } from '@/composables/useParcourColor';
 
 import Character from '@/components-less/Character.vue';
+import Duration from '@/components-less/Duration.vue';
 
 interface Props {
   parcour: Parcour;
@@ -15,6 +16,7 @@ interface Props {
 export default {
   components: {
     Character,
+    Duration,
   },
   props: {
     parcour: {
@@ -46,12 +48,12 @@ export default {
 <template>
   <a class="ParcourCard" :style="{ backgroundColor: parcourColor }" @click="navigateToParcour">
     <header>
-      <h3>{{ parcour.title }}</h3>
-      <time :datetime="parcour.duration"><img src="/img/clock.svg"/> {{ parcour.duration }} MIN</time>
+      <h2><strong>{{ parcour.title }}</strong></h2>
+      <Duration :duration="parcour.duration"/>
     </header>
 
     <div class="content">
-      <p>parcour.description</p>
+      <p><strong>{{ parcour.description }}</strong></p>
       <a class="button">Démarrer</a>
     </div>
 
@@ -77,7 +79,7 @@ export default {
 
 <style lang="scss" scoped>
 .ParcourCard {
-  padding: 40px 50px;
+  padding: 25px 30px;
   border-radius: 10px;
   background-image: url(/img/cloud.svg);
   background-repeat: no-repeat;
@@ -106,39 +108,13 @@ export default {
 
 <style lang="scss" scoped>
 .ParcourCard {
+  --header-2-color: #ffffff;
+  --paragraph-color: #ffffff;
+
   text-align: left;
-}
-h3 {
-  margin: 0;
 
-  font-weight: 900;
-  font-size: 36px;
-  color: #ffffff;
-}
-
-time {
-  display: flex;
-  align-items: center;
-
-  font-size: 14px;
-  font-weight: 400;
-  color: #ffffff;
-  img {
-    height: 20px;
-    width: 20px;
-    margin-inline-end: 10px;
+  h2 {
+    margin: 0;
   }
-}
-
-p {
-  font-size: 24px;
-  font-weight: 600;
-  color: #ffffff;
-}
-
-a {
-  text-decoration: none;
-  &:active { color: inherit; }
-  &:focus { outline: none; }
 }
 </style>

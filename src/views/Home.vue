@@ -1,15 +1,13 @@
 <script lang="ts">
-import Menu from '@/components-layout/Menu.vue';
-import Footer from '@/components-layout/Footer.vue';
 import Home from '@/components-business/Home.vue';
+import Shell from '@/components-layout/Shell.vue';
 
 import { useParcours } from './composables/useParcours';
 
 export default {
   components: {
-    Menu,
-    Footer,
     Home,
+    Shell,
   },
   setup() {
     const { parcours } = useParcours();
@@ -20,8 +18,8 @@ export default {
 </script>
 
 <template>
-  <Menu />
-  <Home v-if="parcours" :parcours="parcours" />
-  <template v-if="!parcours">Loading ...</template>
-  <Footer />
+  <Shell>
+    <Home v-if="parcours" :parcours="parcours" />
+    <template v-if="!parcours">Loading ...</template>
+  </Shell>
 </template>

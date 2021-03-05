@@ -14,10 +14,7 @@ interface Props {
 }
 
 export default {
-  components: {
-    BackgroundImage,
-    Character,
-  },
+  components: { BackgroundImage, Character },
   props: {
     chapitre: {
       type: Object as PropType<Chapitre>,
@@ -46,72 +43,40 @@ export default {
 </script>
 
 <template>
+  <BackgroundImage :mobile-img="mobileBackground" :desktop-img="desktopBackground"/>
   <div class="Chapitre">
-    <BackgroundImage :mobile-img="mobileBackground" :desktop-img="desktopBackground"/>
+    <h2>Partie {{ chapitre.order }}</h2>
+    <h1>{{ chapitre.title }}</h1>
 
-    <div class="Chapitre-content">
-      <h2>Partie {{ chapitre.order }}</h2>
-      <h1>{{ chapitre.title }}</h1>
-      <Character v-if="character" :character="character" :color="parcourColor" />
-      <vue3-markdown-it :source="chapitre.content" />
-      <p></p>
-    </div>
+    <Character v-if="character" :character="character" :color="parcourColor" />
 
-    <a :href="nextLink" :style="{ color: parcourColor }">Commencer</a>
+    <vue3-markdown-it :source="chapitre.content" />
+
+    <a class="button" :href="nextLink" :style="{ color: parcourColor }">Commencer</a>
   </div>
 </template>
 
-<style lang="scss" scoped>.Chapitre { height: 100vh; }</style>
-
 <style lang="scss" scoped>
 .Chapitre {
-  position: relative;
   padding: 30px;
-
   display: flex;
   flex-direction: column;
-  .Chapitre-content {
-    flex: 1;
+  .button {
+    margin: auto auto 0;
   }
 }
 </style>
 
 <style lang="scss" scoped>
 .Chapitre {
+  --header-1-color: #ffffff;
+  --header-2-color: #ffffff;
+  --paragraph-color: #ffffff;
+
   text-align: center;
-}
-h1 {
-  font-size: 36px;
-  font-weight: 500;
-  text-transform: capitalize;
-  color: #ffffff;
-}
 
-h2 {
-  font-size: 24px;
-  font-weight: 300;
-  text-transform: uppercase;
-  color: #ffffff;
-}
-
-p {
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 28px;
-  color: #ffffff;
-}
-
-a {
-  min-width: 345px;
-  margin: 0 auto;
-  padding: 10px;
-  background: #fff;
-  border-radius: 5px;
-  text-align: center;
-  text-transform: uppercase;
-
-  text-decoration: none;
-  &:active { color: inherit; }
-  &:focus { outline: none; }
+  h2 {
+    text-transform: uppercase;
+  }
 }
 </style>

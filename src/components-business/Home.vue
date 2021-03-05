@@ -3,11 +3,11 @@ import { PropType } from 'vue';
 
 import { Parcour } from '@/api';
 
-import ParcourCard from '@/components-less/ParcourCard.vue';
+import Parcours from '@/components-business/Parcours.vue';
 
 export default {
   components: {
-    ParcourCard,
+    Parcours,
   },
   props: {
     parcours: Array as PropType<Parcour[]>,
@@ -46,14 +46,7 @@ export default {
       </ul>
     </section>
 
-    <section>
-      <h1>Découvrir les parcours</h1>
-      <article>
-        <template v-for="(parcour, index) in parcours" :key="index" >
-          <ParcourCard :parcour="parcour" />
-        </template>
-      </article>
-    </section>
+    <Parcours :parcours="parcours" />
   </div>
 </template>
 
@@ -115,31 +108,12 @@ li {
 
 <style lang="scss" scoped>
 .Home {
+  --header-1-color: #3d3d3d;
+  --header-2-color: #626b7f;
   text-align: center;
-}
-h1 {
-  font-size: 44px;
-  font-weight: 500;
-  color: #3D3D3D;
-}
 
-h2 {
-  font-size: 32px;
-  font-weight: 500;
-  color: #626B7F;
-}
-
-p {
-  font-size: 16px;
-  font-weight: 300;
-}
-
-article {
-  p {
-    font-size: 30px;
-    font-weight: 500;
-    line-height: 170%;
-    color: #FEFEFE;
+  article p {
+    --paragraph-color: #fefefe;
   }
 }
 </style>

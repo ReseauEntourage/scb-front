@@ -13,9 +13,7 @@ interface Props {
 }
 
 export default {
-  components: {
-    VideoPlayer,
-  },
+  components: { VideoPlayer },
   props: {
     article: {
       type: Object as PropType<Article>,
@@ -42,77 +40,44 @@ export default {
 
 <template>
   <div class="Video">
-    <div class="Video-content">
-      <h2>{{ chapitre.title }}</h2>
-      <h1>{{ article.title }}</h1>
-      <VideoPlayer :src="video.url" />
-      <vue3-markdown-it :source="video.content" />
-      <p></p>
-    </div>
+    <h2>{{ chapitre.title }}</h2>
+    <h1>{{ article.title }}</h1>
 
-    <a :href="nextLink" :style="{ background: parcourColor }">Continuer</a>
+    <VideoPlayer class="player" :src="video.url" />
+
+    <vue3-markdown-it :source="video.content" />
+
+    <a class="button" :href="nextLink" :style="{ background: parcourColor }">Continuer</a>
   </div>
 </template>
 
-<style lang="scss" scoped>.Video { min-height: 100vh; }</style>
-
 <style lang="scss" scoped>
 .Video {
-  position: relative;
   padding: 30px;
-
   display: flex;
   flex-direction: column;
-  .Video-content {
-    flex: 1;
-    max-width: 768px;
-    margin: 0 auto;
+  .player {
+    margin: auto;
+  }
+  .button {
+    margin: auto auto 0;
   }
 }
 </style>
 
 <style lang="scss" scoped>
-.Video-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-</style>
+.Video {
+  --header-1-color: #3d3d3d;
+  --header-2-color: #c1c1c1;
+  --button-color: #fff;
 
-<style lang="scss" scoped>
-.Video h1,
-.Video h2 {
-  text-align: center;
-}
-h1 {
-  font-size: 24px;
-  font-weight: 500;
-  color: #3d3d3d;
-}
+  h1,
+  h2 {
+    text-align: center;
+  }
 
-h2 {
-  font-size: 16px;
-  font-weight: 400;
-  color: #c1c1c1;
-  text-transform: uppercase;
-}
-
-p {
-  font-weight: 600;
-  font-size: 16px;
-}
-
-a {
-  min-width: 345px;
-  margin: 0 auto;
-  padding: 10px;
-  border-radius: 5px;
-  text-align: center;
-  text-transform: uppercase;
-  color: #fff;
-
-  text-decoration: none;
-  &:active { color: inherit; }
-  &:focus { outline: none; }
+  h2 {
+    text-transform: uppercase;
+  }
 }
 </style>

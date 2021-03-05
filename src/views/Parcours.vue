@@ -1,15 +1,13 @@
 <script lang="ts">
-import Menu from '@/components-layout/Menu.vue';
-import Footer from '@/components-layout/Footer.vue';
 import Parcours from '@/components-business/Parcours.vue';
+import Shell from '@/components-layout/Shell.vue';
 
 import { useParcours } from './composables/useParcours';
 
 export default {
   components: {
-    Menu,
-    Footer,
     Parcours,
+    Shell,
   },
   setup() {
     const { parcours } = useParcours();
@@ -20,8 +18,10 @@ export default {
 </script>
 
 <template>
-  <Menu />
-  <Parcours v-if="parcours" :parcours="parcours" />
-  <template v-if="!parcours">Loading ...</template>
-  <Footer />
+  <Shell>
+    <Parcours v-if="parcours" :parcours="parcours">
+      <h2>À travers des parcours thématiques, retrouvez des vidéos, des quiz et des témoignages pour aller vers les personnes sans-abri de votre quartier.</h2>
+    </Parcours>
+    <template v-if="!parcours">Loading ...</template>
+  </Shell>
 </template>
