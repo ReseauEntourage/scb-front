@@ -74,6 +74,10 @@ export default {
     'content character'
     'content character';
   gap: 0 40px;
+
+  .character {
+    height: 150px;
+  }
 }
 </style>
 

@@ -49,7 +49,10 @@ export default {
 
     <h1>{{ parcour.title }}</h1>
 
-    <Character v-if="character" :character="character" :color="parcourColor" />
+    <div class="character">
+      <Character v-if="character" :character="character" :color="parcourColor" />
+      <vue3-markdown-it class="tooltip" v-if="character" :source="character.speech" />
+    </div>
 
     <a class="button" :href="nextLink" :style="{ color: parcourColor }">Commencer</a>
   </div>
@@ -64,11 +67,38 @@ export default {
     margin: auto auto 0;
   }
 }
+.character {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
 </style>
 
 <style lang="scss" scoped>
 .Parcour {
   --header-1-color: #ffffff;
   text-align: center;
+}
+</style>
+
+<style lang="scss" scoped>
+.tooltip {
+  max-width: 30%;
+  margin-left: 20px;
+  margin-top: 20px;
+  padding: 10px;
+  background: #ffffff;
+  border-radius: 10px;
+  filter: drop-shadow(0px 3px 20px rgba(111, 177, 225, 0.25));
+
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    right: 100%;
+    top: 30px;
+    border: 10px solid #ffffff;
+    border-color: transparent #ffffff transparent transparent;
+  }
 }
 </style>

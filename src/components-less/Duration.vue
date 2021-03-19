@@ -17,9 +17,6 @@ export default {
 
 <style lang="scss" scoped>
 time {
-  display: flex;
-  justify-content: center;
-
   img {
     height: 20px;
     width: 20px;

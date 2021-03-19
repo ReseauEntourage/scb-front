@@ -33,7 +33,7 @@ export default {
 </script>
 
 <template>
-  <div class="ParcourCard-avatar">
+  <div class="Character">
     <img :src="imgSrc" alt="character" />
   </div>
 </template>

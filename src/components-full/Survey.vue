@@ -48,8 +48,8 @@ export default {
     <ResponseInput class="responses" :parcour="parcour" :responses="survey.response" :response="selectedResponse" @update:response="selectedResponse = $event" />
 
     <template v-if="selectedResponse">
-      <a class="button" v-if="selectedResponse.isAnwser" :href="`${href}/true`" :style="{ background: parcourColor }">Continuer</a>
-      <a class="button" v-if="!selectedResponse.isAnwser" :href="`${href}/false`" :style="{ background: parcourColor }">Continuer</a>
+      <a class="button" v-if="selectedResponse.isAnswer" :href="`${href}/true`" :style="{ background: parcourColor }">Continuer</a>
+      <a class="button" v-if="!selectedResponse.isAnswer" :href="`${href}/false`" :style="{ background: parcourColor }">Continuer</a>
     </template>
   </div>
 </template>
